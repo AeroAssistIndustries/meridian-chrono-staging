@@ -537,6 +537,30 @@ html.rv :is(.st,.ctiles button,.sechead).in{opacity:1;transform:none}
 @media(max-width:1000px){.wc{grid-template-columns:repeat(3,minmax(0,1fr))}.story,.exp{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}.team{grid-template-columns:repeat(2,minmax(0,1fr))}.tgrid{grid-template-columns:1fr}}
 @media(max-width:480px){.proof .wrap{grid-template-columns:1fr}.proof div{border-left:0;border-top:1px solid var(--line);padding:16px 4px}.proof div:first-child{border-top:0}}
 @media(max-width:600px){.story,.exp,.team{grid-template-columns:1fr}.team article{grid-template-columns:64px minmax(0,1fr);padding:18px}.team svg{width:64px;height:64px}.cv{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}.cv label:first-child{grid-column:1/-1}.wck .t{font-size:19px}.wc{gap:20px 8px}}
+
+/* ---- v11 mobile QA ---- */
+#grid{clear:both}
+.count{min-height:36px;display:flex;align-items:center;flex-wrap:wrap}
+.jc h3{margin:0 0 6px}.jc p{margin:0 0 10px}
+@media(max-width:760px){
+ .band{padding-block:36px}
+ .stamps{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 14px}
+ .st .stamp{width:104px;height:104px}
+ .st b{font-size:12.5px}.st span{font-size:13.5px;max-width:22ch}
+ .ctiles button{padding:14px}.ctiles b{font-size:13.5px}
+ .sechead{margin-bottom:18px;gap:10px}
+ .lede{font-size:16.5px}
+ body{padding-bottom:0}footer.band{padding-bottom:96px}
+ .cb .rf{font-size:13.5px;line-height:1.45}
+ .wc{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+.cb h3{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;min-height:2.5em;line-height:1.25}
+.row .cb .rf{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.wrap>h2+.lede{margin-top:10px}
+.auth h3{margin-bottom:6px}.founder h2{margin-bottom:10px}.who h3{margin-bottom:6px}
+@media(max-width:760px){.sim .qr{display:grid;grid-template-columns:repeat(3,minmax(132px,1fr));overflow-x:auto;scrollbar-width:none;gap:10px}.sim .qr::-webkit-scrollbar{display:none}.sim .qc .price{font-size:14.5px;white-space:nowrap}}
+@media(min-width:601px) and (max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.dense{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:380px){.st .stamp{width:92px;height:92px}.wck b{font-size:11.5px;letter-spacing:.02em}}
 </style>
 </head>
 <body>
@@ -609,7 +633,7 @@ html.rv :is(.st,.ctiles button,.sechead).in{opacity:1;transform:none}
     <div><p class="lede">Meridian began as founder Rushik Dave's own collection. The authorized dealer relationships he built as a collector are how we place allocated pieces with clients today, and why most of what we sell never reaches a public listing.</p><div class="ctas"><a class="btn" href="#about">Our story</a><a class="btn ghost" href="#contact">Book an appointment</a></div></div>
   </div>
 </section>
-<section class="band" data-view="home" style="padding-bottom:0">
+<section class="band" data-view="home" style="padding-bottom:12px">
   <div class="wrap">
     <div class="sechead"><h2>Meridian time</h2><a class="more" href="#tools">Currency and tools</a></div>
     <div class="wc"></div>
