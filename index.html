@@ -735,6 +735,37 @@ footer h4{color:var(--g2)}
 .chip{box-shadow:inset 0 -2px 0 var(--g1)}
 dialog#pd,dialog#td,#cgP,#mega{border-top:2px solid var(--g1)}
 @media(max-width:760px){.band{padding-block:30px}.sechead h2::before,.wrap>h2::before,h1.pg::before{margin-bottom:10px;width:28px}}
+
+/* ---- v22 elements ---- */
+.mvb{background:#0b0b0b;color:#f1f1ef;padding:clamp(44px,6vw,88px) max(5vw,16px);position:relative;overflow:hidden;background-image:repeating-radial-gradient(circle at 0 0,rgba(201,168,76,.055) 0 1px,transparent 1px 11px),repeating-radial-gradient(circle at 100% 0,rgba(201,168,76,.045) 0 1px,transparent 1px 11px)}
+.mvb .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);gap:clamp(24px,6vw,88px);align-items:center}
+.mvb h2{font-size:clamp(30px,4vw,48px);margin:0 0 14px;color:#fff}
+.mvb h2::before{content:"";display:block;width:36px;height:2px;background:var(--goldg);margin-bottom:14px}
+.mvb .eyebrow{color:var(--g2)}
+.mvb .lede{color:#c9c7c2;max-width:54ch}
+.mvb .btn{background:var(--goldg);border-color:transparent;color:#14110a}
+.mvb .btn.ghost{background:transparent;color:#f1f1ef;border-color:rgba(255,255,255,.5)}
+.mvl{list-style:none;padding:0;margin:22px 0 26px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 18px;max-width:440px}
+.mvl li{display:flex;align-items:center;gap:10px;font:600 13px Archivo,system-ui,sans-serif;font-stretch:125%;text-transform:uppercase;letter-spacing:.05em}
+.mvl .ico{color:var(--g2)}
+#mvS{width:100%;height:auto;fill:none;stroke:#c9a84c;stroke-width:1.1}
+#mvS .pl{stroke:rgba(201,168,76,.5)}#mvS .pl2{stroke:rgba(201,168,76,.22);stroke-dasharray:1 5}
+#mvS .rm{stroke:rgba(201,168,76,.55)}
+#mvS .gr{animation:gsp linear infinite}
+#mvS .gr polygon{fill:rgba(201,168,76,.07)}
+#mvS .jw{fill:#c9a84c;stroke:none}
+#mvS .bal{animation:bal .5s ease-in-out infinite alternate;stroke:#e6cd85}
+#mvS .hsp{stroke-width:.6}
+#mvS .br{fill:rgba(11,11,11,.86);stroke:#e6cd85}
+#mvS text{font:600 8px Archivo,sans-serif;letter-spacing:.34em;fill:rgba(201,168,76,.7);stroke:none}
+@keyframes gsp{to{transform:rotate(360deg)}}@keyframes bal{from{transform:rotate(-42deg)}to{transform:rotate(42deg)}}
+footer.band{background-image:repeating-radial-gradient(circle at 0 0,rgba(201,168,76,.04) 0 1px,transparent 1px 11px)}
+.card .art{transition:transform .25s ease;will-change:transform}
+.hs .btn{position:relative;overflow:hidden}
+.hs .btn::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);animation:shn 5s ease-in-out infinite}
+@keyframes shn{0%,70%{left:-60%}100%{left:130%}}
+@media(max-width:860px){.mvb .wrap{grid-template-columns:1fr}#mvS{max-width:340px;margin:0 auto;order:-1}}
+@media(prefers-reduced-motion:reduce){#mvS .gr,#mvS .bal,.hs .btn::after{animation:none}}
 </style>
 </head>
 <body>
@@ -773,6 +804,18 @@ dialog#pd,dialog#td,#cgP,#mega{border-top:2px solid var(--g1)}
   <div class="wrap">
     <div class="sechead"><h2>New arrivals</h2><div class="arrows"><button type="button" class="ar" data-row="#newa" data-d="0" aria-label="Previous">&#8592;</button><button type="button" class="ar" data-row="#newa" data-d="1" aria-label="Next">&#8594;</button><a class="more" href="#shop">Shop all</a></div></div>
     <div class="row" id="newa"></div>
+  </div>
+</section>
+<section class="mvb" data-view="home">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Inside every watch we sell</p>
+      <h2>Opened, measured, checked.</h2>
+      <p class="lede">A watch is a few hundred parts working to a tolerance finer than a hair. Before any piece is offered, ours go on the bench: the movement is inspected, the case and bracelet are measured against the reference, and a second specialist signs it off.</p>
+      <ul class="mvl" id="mvl"></ul>
+      <div class="ctas"><a class="btn" href="#authentication">How we authenticate</a><a class="btn ghost" href="#journal">Anatomy of a watch</a></div>
+    </div>
+    <svg id="mvS" viewBox="0 0 420 380" role="img" aria-label="A watch movement in motion"></svg>
   </div>
 </section>
 <section class="band" style="padding-bottom:0" data-view="home">
@@ -1511,6 +1554,14 @@ $("#apptForm").addEventListener("submit",()=>{const d=$("#aDate").value,box=$("#
   $("#szS").innerHTML=c(66,a.mm,"currentColor")+c(178,b.mm,"#c9a84c")+`<circle cx="66" cy="85" r="${b.mm/2*k}" fill="none" stroke="#c9a84c" stroke-width="1.2" stroke-dasharray="3 4" opacity=".8"/><circle cx="266" cy="85" r="${24.26/2*k}" fill="none" stroke="currentColor" stroke-width="1" opacity=".5"/><text x="266" y="88" text-anchor="middle" font-size="8" fill="currentColor" opacity=".6" font-family="Archivo,sans-serif">25¢</text>`;
   const d=Math.round((b.mm-a.mm)*10)/10;$("#szR").innerHTML=d==0?"The same size on paper.":`The ${esc(b.m)} is <b>${Math.abs(d)} mm ${d>0?"larger":"smaller"}</b> across.`};
  $("#szA").oninput=go;$("#szB").oninput=go;go()}
+/* movement animation */
+{const gear=(cx,cy,r,n,dur,rev,ph)=>{const d=r*.16,P=[];for(let i=0;i<n;i++){const a=i/n*Math.PI*2,w=Math.PI/n*.5;[[a-w,r-d],[a-w*.5,r],[a+w*.5,r],[a+w,r-d]].forEach(q=>P.push((cx+Math.cos(q[0])*q[1]).toFixed(1)+","+(cy+Math.sin(q[0])*q[1]).toFixed(1)))}let sp="";for(let i=0;i<5;i++){const a=i/5*Math.PI*2;sp+=`<line x1="${cx+Math.cos(a)*r*.22}" y1="${cy+Math.sin(a)*r*.22}" x2="${cx+Math.cos(a)*r*.7}" y2="${cy+Math.sin(a)*r*.7}"/>`}
+  return`<g class="gr" style="transform-origin:${cx}px ${cy}px;animation-duration:${dur}s;animation-direction:${rev?"reverse":"normal"};animation-delay:-${ph||0}s"><polygon points="${P.join(" ")}"/><circle cx="${cx}" cy="${cy}" r="${r*.72}"/>${sp}<circle cx="${cx}" cy="${cy}" r="${r*.2}"/></g><circle cx="${cx}" cy="${cy}" r="${Math.max(3,r*.07)}" class="jw"/>`};
+ let rim="";for(let i=0;i<60;i++)rim+=`<line x1="210" y1="12" x2="210" y2="${i%5?17:22}" transform="rotate(${i*6} 210 190)"/>`;
+ $("#mvS").innerHTML=`<circle cx="210" cy="190" r="182" class="pl"/><circle cx="210" cy="190" r="170" class="pl2"/><g class="rm">${rim}</g>${gear(170,170,82,36,36,0)}${gear(287,236,46,20,20,1,.5)}${gear(308,150,34,14,14,0,.2)}${gear(96,270,40,18,18,1,.4)}${gear(232,292,26,12,12,0,.3)}<g class="bal" style="transform-origin:210px 96px"><circle cx="210" cy="96" r="40"/><circle cx="210" cy="96" r="33"/><line x1="170" y1="96" x2="250" y2="96"/><line x1="210" y1="56" x2="210" y2="136"/><path d="M210 96m-6 0a6 6 0 1 0 12 0a9 9 0 1 0-18 0a12 12 0 1 0 24 0a15 15 0 1 0-30 0" class="hsp"/></g><circle cx="210" cy="96" r="4" class="jw"/><path d="M150 46Q210 28 270 46L263 72Q210 58 157 72Z" class="br"/><text x="210" y="356" text-anchor="middle">MERIDIAN · CHRONO · GROUP</text>`;
+ $("#mvl").innerHTML=[["search","Provenance"],["hand","Movement"],["box","Case and bracelet"],["auth","Second review"]].map(x=>`<li>${ico(x[0])}${x[1]}</li>`).join("")}
+/* card tilt */
+if(matchMedia("(hover:hover) and (pointer:fine)").matches&&!matchMedia("(prefers-reduced-motion:reduce)").matches){let last=null;document.addEventListener("mousemove",e=>{const c=e.target.closest&&e.target.closest(".card"),a=c&&c.querySelector(".art");if(last&&last!=a){last.style.transform="";last=null}if(!a)return;const r=a.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;a.style.transform=`perspective(700px) rotateY(${(x*7).toFixed(2)}deg) rotateX(${(-y*7).toFixed(2)}deg)`;last=a})}
 /* chronograph */
 {let tk="";for(let i=0;i<60;i++)tk+=`<line x1="100" y1="${i%5?10:8}" x2="100" y2="${i%5?15:20}" stroke="currentColor" stroke-width="${i%5?.8:1.8}" transform="rotate(${i*6} 100 100)"/>`;for(let i=0;i<30;i+=5)tk+=`<line x1="100" y1="118" x2="100" y2="122" stroke="currentColor" stroke-width="1" transform="rotate(${i*12} 100 142)"/>`;
  $("#chS").innerHTML=`<circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="1.8"/>${tk}<circle cx="100" cy="142" r="26" fill="none" stroke="currentColor" stroke-width=".8"/><text x="100" y="62" text-anchor="middle" font-family="Archivo,sans-serif" font-size="7.5" letter-spacing="2.5" fill="currentColor">MERIDIAN</text><line id="chM" x1="100" y1="142" x2="100" y2="121" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line id="chH" x1="100" y1="118" x2="100" y2="16" stroke="#c9a84c" stroke-width="1.6" stroke-linecap="round"/><circle cx="100" cy="100" r="3.4" fill="#c9a84c"/>`;
