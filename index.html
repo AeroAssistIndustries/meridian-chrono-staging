@@ -12,7 +12,11 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Meridian Chrono Group">
 <meta property="og:description" content="Authenticated luxury watches, private sourcing and trade-ins.">
-<meta property="og:image" content="https://images.unsplash.com/photo-1626624386327-5204714bae9f?auto=format&fit=crop&q=70&w=1200&h=630">
+<meta property="og:image" content="https://aeroassistindustries.github.io/meridian-chrono-staging/brand/launch-email-hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="brand/app-icon-180.png">
+<meta name="apple-mobile-web-app-title" content="Meridian">
 <meta name="description" content="Meridian Chrono Group: authenticated luxury watches, private sourcing through authorized dealer relationships, and trade-ins.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -890,6 +894,19 @@ main:focus{outline:none}
 .chips button span{margin-left:6px;opacity:.7}
 .chips button.all{background:none;color:var(--ink);box-shadow:none;text-decoration:underline;text-underline-offset:3px}
 #fqT{margin-bottom:14px}
+
+/* ---- v32 ---- */
+.lsn{background:var(--band);padding:clamp(40px,6vw,84px) max(5vw,16px);text-align:center}
+.lsn .eyebrow{margin:0 0 18px}
+#lsQ{margin:0 auto;max-width:22ch;font:500 clamp(26px,4.2vw,50px)/1.15 Cinzel,"Trajan Pro",Georgia,serif;letter-spacing:.03em;text-transform:uppercase;color:var(--ink);opacity:0}
+#lsQ.in{animation:vfade .7s ease forwards}
+#lsP{margin:18px auto 0;max-width:56ch;font-size:17px;line-height:1.6;color:var(--mute);min-height:82px}
+.lsnn{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:18px;flex-wrap:wrap}
+#lsN{font:600 12px Archivo,system-ui,sans-serif;letter-spacing:.14em;color:var(--acc);font-variant-numeric:tabular-nums;min-width:64px}
+.lsnn .more{margin-left:10px}
+#cd tr.df th::after{content:"";display:inline-block;width:6px;height:6px;background:var(--gold-500);transform:rotate(45deg);margin-left:8px;vertical-align:middle}
+#cd tr.df td{font-weight:600}
+@media(max-width:760px){#lsP{font-size:15.5px;min-height:120px}.lsn{padding:36px 20px}}
 </style>
 </head>
 <body>
@@ -978,6 +995,14 @@ main:focus{outline:none}
   </div>
 </section>
 
+<section class="lsn" data-view="home">
+  <div class="wrap">
+    <p class="eyebrow">What collecting has taught us</p>
+    <blockquote id="lsQ"></blockquote>
+    <p id="lsP"></p>
+    <div class="lsnn"><button type="button" class="ar" id="lsB" aria-label="Previous lesson">&#8592;</button><span id="lsN"></span><button type="button" class="ar" id="lsF" aria-label="Next lesson">&#8594;</button><a class="more" href="#about">All eight lessons</a></div>
+  </div>
+</section>
 <section class="band" data-view="home">
   <div class="wrap two">
     <div><h2 class="big">Built on eight years of collecting.</h2><img class="strip" alt="" src="https://images.unsplash.com/photo-1604242692760-2f7b0c26856d?auto=format&fit=crop&q=70&w=1000" onerror="this.remove()"></div>
@@ -1584,7 +1609,7 @@ function renderCmp(){$("#cmpbar").hidden=!cmp.length;$("#cmpn").textContent=cmp.
 function openCmp(){const L=cmp.map(id=>W.find(w=>w.id==id)),row=(l,f)=>`<tr><th>${l}</th>${L.map(w=>`<td>${f(w)}</td>`).join("")}</tr>`;
  cd.innerHTML=`<button class="x" aria-label="Close">×</button><div class="cin"><h2>Compare</h2><div class="scroll"><table class="ct"><tr><th></th>${L.map(w=>`<td><div class="mini2">${svgW(w)}</div><b>${esc(w.b)}</b><br>${esc(w.m)}</td>`).join("")}</tr>${row("Price",w=>`<b>${usd(w.p)}</b>`)}${row("Reference",w=>esc(w.r))}${row("Year",w=>w.y)}${row("Condition",w=>esc(w.c))}${row("Included",w=>esc(w.set))}${row("Case size",w=>w.mm+" mm")}${row("Material",w=>esc(w.mat))}${row("Movement",w=>esc(w.mv))}<tr><th></th>${L.map(w=>`<td><button class="btn" data-v="${w.id}">View</button></td>`).join("")}</tr></table></div></div>`;cd.showModal()}
 cd.onclick=e=>{if(e.target==cd||e.target.closest(".x")){cd.close();return}const v=e.target.closest("[data-v]");if(v){cd.close();openPD(+v.dataset.v)}};
-$("#cmpgo").onclick=openCmp;$("#cmpclr").onclick=()=>{cmp=[];renderCmp();list()};
+$("#cmpgo").onclick=()=>{openCmp();document.querySelectorAll("#cd tr").forEach(tr=>{const t=[...tr.querySelectorAll("td")].map(x=>x.textContent.trim());if(t.length>1&&new Set(t).size>1)tr.classList.add("df")})};$("#cmpclr").onclick=()=>{cmp=[];renderCmp();list()};
 /* watch finder */
 const qd=$("#qd"),Q=[{k:"bud",q:"What's your budget?",o:[["Under $15,000",[0,15000]],["$15,000 to $50,000",[15000,50000]],["$50,000 to $100,000",[50000,100000]],["$100,000 and up",[100000,1e9]],["Open",null]]},{k:"sty",q:"What are you after?",o:[["An everyday sports watch","sport"],["Something for dress and occasions","dress"],["A chronograph","chrono"],["A statement piece","state"]]},{k:"size",q:"How do you like a watch to wear?",o:[["Compact, under 40 mm",[0,40]],["Classic, 40 to 41 mm",[40,41.5]],["Bold, 42 mm and up",[42,99]],["No preference",null]]}];
 let qa={},qi=0;
@@ -1788,6 +1813,13 @@ $("#chips").onclick=e=>{const b=e.target.closest("button");if(!b)return;const x=
  const draw=()=>{$("#fqT").innerHTML=["All",...Object.keys(K)].map(k=>`<button type="button" role="tab" aria-selected="${k==on}" data-k="${k}">${k}</button>`).join("");D.forEach(d=>d.hidden=on!="All"&&cat(d)!=on);$("#fqn").hidden=true};
  $("#fqT").onclick=e=>{const b=e.target.closest("button");if(b){on=b.dataset.k;$("#fq").value="";draw()}};$("#fq").addEventListener("input",()=>{if(on!="All"){on="All";$("#fqT").querySelectorAll("button").forEach(b=>b.setAttribute("aria-selected",b.dataset.k=="All"))}});draw()}
 document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-shl]");if(!b)return;const u=location.origin+location.pathname+"#article-"+b.dataset.shl;(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>toast("Link copied"),()=>toast("Copy is not available here"))});
+/* lessons band, swipe between watches */
+{const L=[...document.querySelectorAll(".wis li")].map(li=>[li.querySelector("b").textContent,li.querySelector("p").textContent]);let n=Math.floor(Date.now()/864e5)%L.length,t;
+ const d=()=>{const q=$("#lsQ");q.classList.remove("in");void q.offsetWidth;q.textContent=L[n][0];$("#lsP").textContent=L[n][1];$("#lsN").textContent=String(n+1).padStart(2,"0")+" / "+String(L.length).padStart(2,"0");q.classList.add("in")},go=k=>{n=(n+k+L.length)%L.length;d();clearInterval(t);t=setInterval(()=>{if(view=="home"&&!document.hidden)go(1)},11000)};
+ if(L.length){$("#lsB").onclick=()=>go(-1);$("#lsF").onclick=()=>go(1);go(0)}}
+{let x0=null,y0=0;pd.addEventListener("touchstart",e=>{const t=e.target;x0=t.closest("input,select,textarea,.qr,.fit")?null:e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
+ pd.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;x0=null;if(Math.abs(dx)>80&&Math.abs(dy)<50)pd.dispatchEvent(new KeyboardEvent("keydown",{key:dx<0?"ArrowRight":"ArrowLeft",bubbles:true}))},{passive:true})}
+if("serviceWorker"in navigator){/* no offline cache: the site always loads fresh */}
 /* chronograph */
 {let tk="";for(let i=0;i<60;i++)tk+=`<line x1="100" y1="${i%5?10:8}" x2="100" y2="${i%5?15:20}" stroke="currentColor" stroke-width="${i%5?.8:1.8}" transform="rotate(${i*6} 100 100)"/>`;for(let i=0;i<30;i+=5)tk+=`<line x1="100" y1="118" x2="100" y2="122" stroke="currentColor" stroke-width="1" transform="rotate(${i*12} 100 142)"/>`;
  $("#chS").innerHTML=`<circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="1.8"/>${tk}<circle cx="100" cy="142" r="26" fill="none" stroke="currentColor" stroke-width=".8"/><text x="100" y="62" text-anchor="middle" font-family="Archivo,sans-serif" font-size="7.5" letter-spacing="2.5" fill="currentColor">MERIDIAN</text><line id="chM" x1="100" y1="142" x2="100" y2="121" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line id="chH" x1="100" y1="118" x2="100" y2="16" stroke="#d2b274" stroke-width="1.6" stroke-linecap="round"/><circle cx="100" cy="100" r="3.4" fill="#d2b274"/>`;
