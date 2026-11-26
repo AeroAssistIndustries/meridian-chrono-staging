@@ -561,6 +561,19 @@ html.rv :is(.st,.ctiles button,.sechead).in{opacity:1;transform:none}
 @media(max-width:760px){.sim .qr{display:grid;grid-template-columns:repeat(3,minmax(132px,1fr));overflow-x:auto;scrollbar-width:none;gap:10px}.sim .qr::-webkit-scrollbar{display:none}.sim .qc .price{font-size:14.5px;white-space:nowrap}}
 @media(min-width:601px) and (max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.dense{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:380px){.st .stamp{width:92px;height:92px}.wck b{font-size:11.5px;letter-spacing:.02em}}
+
+/* ---- v12 ---- */
+.accent .card{background:color-mix(in srgb,light-dark(#fff,#000) 42%,transparent)}
+.accent .card:hover{background:color-mix(in srgb,light-dark(#fff,#000) 62%,transparent)}
+.chr{display:grid;grid-template-columns:minmax(0,170px) minmax(0,1fr);gap:22px;align-items:center}
+.chr svg{width:100%;height:auto;color:var(--ink)}
+.chT{font:500 34px Archivo,system-ui,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.chB{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.chB .btn{padding:10px 14px;min-height:0}
+.chL{list-style:none;padding:0;margin:12px 0 0;font-size:14px}.chL li{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:6px 0;color:var(--mute)}.chL b{color:var(--ink);font-variant-numeric:tabular-nums}
+.mo{display:grid;grid-template-columns:120px minmax(0,1fr);gap:22px;align-items:center}.mo svg{width:120px;height:120px;color:var(--line)}
+#wgI{width:100%;margin-top:8px}
+@media(max-width:760px){#totop{width:38px;height:38px;right:10px;font-size:15px;opacity:.92}}
+@media(max-width:480px){.chr{grid-template-columns:1fr;justify-items:center;text-align:center}.chr svg{max-width:190px}.chB{justify-content:center}.mo{grid-template-columns:92px minmax(0,1fr);gap:16px}.mo svg{width:92px;height:92px}}
 </style>
 </head>
 <body>
@@ -633,7 +646,7 @@ html.rv :is(.st,.ctiles button,.sechead).in{opacity:1;transform:none}
     <div><p class="lede">Meridian began as founder Rushik Dave's own collection. The authorized dealer relationships he built as a collector are how we place allocated pieces with clients today, and why most of what we sell never reaches a public listing.</p><div class="ctas"><a class="btn" href="#about">Our story</a><a class="btn ghost" href="#contact">Book an appointment</a></div></div>
   </div>
 </section>
-<section class="band" data-view="home" style="padding-bottom:12px">
+<section class="band" data-view="home">
   <div class="wrap">
     <div class="sechead"><h2>Meridian time</h2><a class="more" href="#tools">Currency and tools</a></div>
     <div class="wc"></div>
@@ -784,10 +797,11 @@ html.rv :is(.st,.ctiles button,.sechead).in{opacity:1;transform:none}
 <section class="band" id="tools" data-view="tools">
   <div class="wrap">
     <p class="eyebrow">Tools</p>
-    <h1 class="pg">World time, currency and references.</h1>
+    <h1 class="pg">The watch desk.</h1>
+    <p class="lede" style="margin-top:10px">World time, live currency, a working chronograph, tonight's moon and a few collector's tools.</p>
     <div class="wc" style="margin-top:34px"></div>
     <div class="tgrid">
-      <div class="tool">
+      <div class="tool" style="grid-column:1/-1">
         <h2>Currency converter</h2>
         <div class="cv">
           <label>Amount<input id="cvA" inputmode="decimal" value="10000"></label>
@@ -803,6 +817,27 @@ html.rv :is(.st,.ctiles button,.sechead).in{opacity:1;transform:none}
         <label>Reference number<input id="rdI" placeholder="For example 126613LN" autocomplete="off"></label>
         <p class="cvr" id="rdR" aria-live="polite"></p>
         <p class="cvn">The last digit of a modern Rolex reference tells you the case metal. Older references follow different rules.</p>
+      </div>
+      <div class="tool">
+        <h2>Chronograph</h2>
+        <div class="chr">
+          <svg id="chS" viewBox="0 0 200 200" role="img" aria-label="Chronograph dial"></svg>
+          <div>
+            <div class="chT" id="chT" aria-live="off">00:00.00</div>
+            <div class="chB"><button type="button" class="btn" id="chGo">Start</button><button type="button" class="btn ghost" id="chLap">Lap</button><button type="button" class="btn ghost" id="chRe">Reset</button></div>
+            <ol class="chL" id="chL"></ol>
+          </div>
+        </div>
+      </div>
+      <div class="tool">
+        <h2>Moon phase</h2>
+        <div class="mo"><svg id="moS" viewBox="0 0 120 120" role="img" aria-label="Tonight's moon"></svg><div><p class="cvr" id="moN" style="margin-top:0"></p><p class="cvn" id="moD"></p></div></div>
+      </div>
+      <div class="tool">
+        <h2>Wrist size guide</h2>
+        <label for="wgI"><span style="display:flex;justify-content:space-between">Wrist size <b id="wgV" style="color:var(--ink)"></b></span><input type="range" id="wgI" min="5.5" max="8.5" step="0.25" value="7"></label>
+        <p class="cvr" id="wgR" aria-live="polite"></p>
+        <p class="cvn">Measure just above the wrist bone with a tape or a strip of paper. A guide only: lug shape and thickness change how a watch wears.</p>
       </div>
     </div>
   </div>
@@ -1156,6 +1191,21 @@ const CITY=[["New York","America/New_York"],["London","Europe/London"],["Geneva"
 /* rolex reference decoder */
 {const MT=["Oystersteel","Oystersteel and Everose gold","Oystersteel and platinum","Oystersteel and yellow gold","Oystersteel and white gold","Everose gold","Platinum",null,"Yellow gold","White gold"];
  $("#rdI").oninput=e=>{const m=e.target.value.replace(/\s/g,"").match(/^(\d{4,6})([A-Za-z]*)/),r=$("#rdR");if(!m){r.textContent=e.target.value.trim()?"Enter the digits of the reference first.":"";return}const d=+m[1].slice(-1),t=MT[d];r.innerHTML=t?`Last digit <b>${d}</b>: <b>${t}</b>`:`Last digit <b>${d}</b> is not used on current models.`}}
+/* chronograph */
+{let tk="";for(let i=0;i<60;i++)tk+=`<line x1="100" y1="${i%5?10:8}" x2="100" y2="${i%5?15:20}" stroke="currentColor" stroke-width="${i%5?.8:1.8}" transform="rotate(${i*6} 100 100)"/>`;for(let i=0;i<30;i+=5)tk+=`<line x1="100" y1="118" x2="100" y2="122" stroke="currentColor" stroke-width="1" transform="rotate(${i*12} 100 142)"/>`;
+ $("#chS").innerHTML=`<circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="1.8"/>${tk}<circle cx="100" cy="142" r="26" fill="none" stroke="currentColor" stroke-width=".8"/><text x="100" y="62" text-anchor="middle" font-family="Archivo,sans-serif" font-size="7.5" letter-spacing="2.5" fill="currentColor">MERIDIAN</text><line id="chM" x1="100" y1="142" x2="100" y2="121" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line id="chH" x1="100" y1="118" x2="100" y2="16" stroke="#c9a84c" stroke-width="1.6" stroke-linecap="round"/><circle cx="100" cy="100" r="3.4" fill="#c9a84c"/>`;
+ let run=false,t0=0,acc=0,laps=[];const el=()=>acc+(run?performance.now()-t0:0),f=ms=>{const c=Math.floor(ms/10),m=Math.floor(c/6000),s2=Math.floor(c/100)%60;return String(m).padStart(2,"0")+":"+String(s2).padStart(2,"0")+"."+String(c%100).padStart(2,"0")};
+ const draw=()=>{const ms=el();$("#chT").textContent=f(ms);$("#chH").setAttribute("transform",`rotate(${ms/1000*6%360} 100 100)`);$("#chM").setAttribute("transform",`rotate(${ms/60000*12%360} 100 142)`);if(run)requestAnimationFrame(draw)};
+ $("#chGo").onclick=()=>{if(run){acc=el();run=false}else{t0=performance.now();run=true;requestAnimationFrame(draw)}$("#chGo").textContent=run?"Stop":"Start";draw()};
+ $("#chLap").onclick=()=>{if(!el())return;laps.unshift(el());laps=laps.slice(0,5);$("#chL").innerHTML=laps.map((l,i)=>`<li><span>Lap ${laps.length-i}</span><b>${f(l)}</b></li>`).join("")};
+ $("#chRe").onclick=()=>{run=false;acc=0;laps=[];$("#chL").innerHTML="";$("#chGo").textContent="Start";draw()};draw()}
+/* moon phase */
+{const SYN=29.530588853,d=((Date.now()-Date.UTC(2000,0,6,18,14))/864e5%SYN+SYN)%SYN,fr=d/SYN,ill=(1-Math.cos(2*Math.PI*fr))/2,R=52,rx=Math.abs(Math.cos(2*Math.PI*fr))*R,wax=fr<.5,cres=fr<.25||fr>.75;
+ const N=["New moon","Waxing crescent","First quarter","Waxing gibbous","Full moon","Waning gibbous","Last quarter","Waning crescent"],nm=N[Math.round(fr*8)%8],toFull=((.5-fr+1)%1)*SYN;
+ $("#moS").innerHTML=`<circle cx="60" cy="60" r="${R}" fill="#1b1b1b" stroke="currentColor" stroke-width="1"/><path d="M60 ${60-R}A${R} ${R} 0 0 ${wax?1:0} 60 ${60+R}A${rx.toFixed(1)} ${R} 0 0 ${(wax?cres:!cres)?0:1} 60 ${60-R}z" fill="#efe6c8"/><circle cx="60" cy="60" r="57.5" fill="none" stroke="#c9a84c" stroke-width=".6" stroke-dasharray="1 3"/>`;
+ $("#moN").innerHTML=`<b>${nm}</b>`;$("#moD").textContent=`${Math.round(ill*100)}% lit, day ${Math.floor(d)+1} of the lunar month. ${toFull<1?"Full moon tonight.":"Next full moon in about "+Math.round(toFull)+(Math.round(toFull)==1?" day.":" days.")}`}
+/* wrist guide */
+{const G=[[6.25,34,38],[7,36,40],[7.75,39,42],[99,41,45]],go=()=>{const v=+$("#wgI").value,g=G.find(x=>v<x[0]),n=W.filter(w=>w.mm>=g[1]&&w.mm<=g[2]).length;$("#wgV").textContent=v+" in ("+(v*2.54).toFixed(1)+" cm)";$("#wgR").innerHTML=`Look at <b>${g[1]} to ${g[2]} mm</b> cases. <span>${n} in hand right now.</span>`};$("#wgI").oninput=go;go()}
 /* about: team and promises */
 {const T=[["Rushik Dave","Founder","A collector before he was a dealer. Rushik leads sourcing personally and still makes many of the calls himself."],["Elena Marchetti","Head of Authentication","Elena runs the bench where every watch is opened, measured and checked against its reference. Nothing is offered until she has signed it off."],["Tomas Keller","Watchmaker","Tomas inspects movements, regulates timing and tells us plainly when a watch needs work before it can be sold."],["Daniel Okafor","Client Director","Daniel is the first call for most clients. He takes the brief, keeps you updated through a search and stays on it until the watch is on your wrist."],["Priya Raman","Sourcing, India and the Middle East","Priya looks after our dealer and collector relationships from Mumbai to Dubai, and often hears about a piece before it is listed anywhere."],["Hannah Brooks","Operations and Delivery","Hannah arranges payment, paperwork and shipping, and makes sure every watch arrives exactly as described."],["Arjun Mehta","Editor, the Journal","Arjun writes the journal and the glossary. His job is to explain watches in plain English."]];
  $("#team").innerHTML=T.map(t=>`<article><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="50" cy="50" r="43.5" fill="none" stroke="currentColor" stroke-width=".5"/><path d="M50 2l2.6 4-2.6 4-2.6-4z" fill="#c9a84c"/><text x="50" y="61" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="32" fill="currentColor">${t[0].split(" ").map(x=>x[0]).join("")}</text></svg><div><h3>${t[0]}</h3><span>${t[1]}</span><p>${t[2]}</p></div></article>`).join("");
