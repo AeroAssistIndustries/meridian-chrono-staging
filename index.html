@@ -772,6 +772,29 @@ footer.band{background-image:repeating-radial-gradient(circle at 0 0,rgba(201,16
 #toast{position:fixed;left:50%;bottom:92px;z-index:120;transform:translate(-50%,16px);background:#111;color:#fff;border-bottom:2px solid var(--g1);padding:12px 18px;font:600 12.5px Archivo,system-ui,sans-serif;font-stretch:125%;text-transform:uppercase;letter-spacing:.05em;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.3)}
 #toast.on{opacity:1;transform:translate(-50%,0)}
 @media(max-width:760px){#shareF{display:none}}
+
+/* ---- v24 one of a kind ---- */
+.wmw{margin-bottom:34px}
+#wmS{width:100%;height:auto;display:block;background:var(--tile)}
+#wmS .gd line{stroke:var(--line);stroke-width:.6}
+#wmS .ld circle{fill:var(--mute);opacity:.55}
+#wmS .nt{fill:#0b1020;opacity:.42}
+#wmS .nn{stroke:#c9a84c;stroke-width:1.6}#wmS .nn2{fill:#c9a84c}
+#wmS .ct circle{fill:#c9a84c;stroke:var(--bg);stroke-width:1.5}
+#wmS .ct .pu{fill:none;stroke:#c9a84c;stroke-width:1;opacity:.6;transform-box:fill-box;transform-origin:center;animation:pul 2.6s ease-out infinite}
+#wmS .ct text{font:600 10px Archivo,system-ui,sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--tile);stroke-width:3px;letter-spacing:.04em}
+@keyframes pul{from{transform:scale(.5);opacity:.8}to{transform:scale(1.6);opacity:0}}
+#wmT{margin:14px 0 0;color:var(--mute);font-size:16px;max-width:70ch}#wmT b{color:var(--ink)}
+.orb{fill:#c9a84c;transform-origin:30px 30px;animation:orb 60s linear infinite}
+@keyframes orb{to{transform:rotate(360deg)}}
+.beat{margin:0 0 26px;display:grid;gap:10px;max-width:520px}
+.beat>span{font:600 11.5px Archivo,system-ui,sans-serif;font-stretch:125%;text-transform:uppercase;letter-spacing:.08em;color:var(--g2)}
+#btB{display:flex;flex-wrap:wrap;gap:8px}
+#btB button{border:1px solid rgba(255,255,255,.35);background:none;color:#f1f1ef;padding:9px 13px;font:600 13px Archivo,system-ui,sans-serif;font-variant-numeric:tabular-nums;cursor:pointer}
+#btB button[aria-pressed=true]{background:var(--goldg);color:#14110a;border-color:transparent}
+#btN{margin:0;font-size:14.5px;color:#b9b7b2;min-height:44px}
+@media(max-width:760px){#wmS .ct text{font-size:15px}#wmS .ct circle{r:6}#wmT{font-size:15px}}
+@media(prefers-reduced-motion:reduce){.orb,#wmS .ct .pu{animation:none}}
 </style>
 </head>
 <body>
@@ -825,6 +848,7 @@ footer.band{background-image:repeating-radial-gradient(circle at 0 0,rgba(201,16
       <h2>Opened, measured, checked.</h2>
       <p class="lede">A watch is a few hundred parts working to a tolerance finer than a hair. Before any piece is offered, ours go on the bench: the movement is inspected, the case and bracelet are measured against the reference, and a second specialist signs it off.</p>
       <ul class="mvl" id="mvl"></ul>
+      <div class="beat"><span>Hear the beat</span><div id="btB"></div><p id="btN">A movement is named for how many times its balance swings each hour. Tap a rate to hear it.</p></div>
       <div class="ctas"><a class="btn" href="#authentication">How we authenticate</a><a class="btn ghost" href="#journal">Anatomy of a watch</a></div>
     </div>
     <svg id="mvS" viewBox="0 0 420 380" role="img" aria-label="A watch movement in motion"></svg>
@@ -866,6 +890,7 @@ footer.band{background-image:repeating-radial-gradient(circle at 0 0,rgba(201,16
 <section class="band" data-view="home">
   <div class="wrap">
     <div class="sechead"><h2>Meridian time</h2><a class="more" href="#tools">Currency and tools</a></div>
+    <div class="wmw"><svg id="wmS" viewBox="0 0 720 300" role="img" aria-label="World map showing day, night and the line of solar noon"></svg><p id="wmT" aria-live="off"></p></div>
     <div class="wc"></div>
   </div>
 </section>
@@ -1084,6 +1109,13 @@ footer.band{background-image:repeating-radial-gradient(circle at 0 0,rgba(201,16
       <div class="tool">
         <h2>Size compare</h2>
         <div class="szc"><div><label>First watch<select id="szA"></select></label><label style="margin-top:12px">Second watch<select id="szB"></select></label><p class="cvr" id="szR" aria-live="polite"></p><p class="cvn">Drawn to the same scale, with a US quarter (24.3 mm) for reference.</p></div><svg id="szS" viewBox="0 0 300 170" role="img" aria-label="Case sizes compared"></svg></div>
+      </div>
+      <div class="tool">
+        <h2>Birth-year watch</h2>
+        <label>A year that matters to you<input id="byI" inputmode="numeric" maxlength="4" placeholder="For example 1995"></label>
+        <p class="cvr" id="byR" aria-live="polite"></p>
+        <div id="byA"></div>
+        <p class="cvn">Collectors often look for a watch made in the year they were born, married or started something.</p>
       </div>
       <div class="tool">
         <h2>Wrist size guide</h2>
@@ -1578,6 +1610,35 @@ if(matchMedia("(hover:hover) and (pointer:fine)").matches&&!matchMedia("(prefers
 /* share a search, welcome back row */
 $("#shareF").onclick=()=>{const P=new URLSearchParams();[["b",brand],["c",coll],["p",$("#fPrice").value],["z",$("#fSize").value],["m",$("#fMat").value],["k",$("#fCond").value],["s",$("#fSort").value=="new"?"":$("#fSort").value],["q",$("#q").value.trim()],["f",$("#fSet").checked?"1":""]].forEach(([k,v])=>{if(v)P.set(k,v)});const u=location.origin+location.pathname+"#shop"+(P.toString()?"?"+P.toString():"");(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>toast("Link copied"),()=>toast("Copy is not available here"))};
 $("#wbr").addEventListener("click",rowClick);renderSeen();
+/* the meridian map: day, night and solar noon */
+{const X=l=>(l+180)*2,Y=a=>(75-a)*2.4,LAND=[[65,[[-165,-60],[-50,-25],[5,180]]],[55,[[-165,-58],[-8,160]]],[45,[[-124,-62],[-8,142]]],[35,[[-121,-77],[-8,10],[26,121],[131,140]]],[25,[[-111,-98],[-82,-80],[-14,57],[68,120]]],[15,[[-104,-86],[-16,50],[74,84],[95,108],[121,124]]],[5,[[-77,-51],[-10,47],[98,117]]],[-5,[[-79,-36],[11,40],[101,150]]],[-15,[[-75,-39],[13,40],[45,49],[126,145]]],[-25,[[-70,-46],[15,33],[45,47],[114,152]]],[-35,[[-72,-56],[18,28],[116,150],[173,177]]],[-45,[[-73,-66],[168,173]]]];
+ let dots="";LAND.forEach(([la,R])=>[2.5,-2.5].forEach(o=>R.forEach(([a,b])=>{for(let l=Math.ceil(a/5)*5;l<=b;l+=5)dots+=`<circle cx="${X(l)}" cy="${Y(la+o).toFixed(1)}" r="2"/>`})));
+ let grid="";for(let l=-180;l<=180;l+=15)grid+=`<line x1="${X(l)}" y1="0" x2="${X(l)}" y2="300"/>`;
+ const CT=[["Arizona",33.4,-112.1],["New York",40.7,-74],["London",51.5,-.1],["Geneva",46.2,6.1],["Dubai",25.2,55.3],["Mumbai",19.1,72.9]];
+ const draw=()=>{const d=new Date(),doy=Math.floor((d-new Date(Date.UTC(d.getUTCFullYear(),0,0)))/864e5),dec=-23.44*Math.cos(2*Math.PI*(doy+10)/365)*Math.PI/180,uh=d.getUTCHours()+d.getUTCMinutes()/60,ls=((12-uh)*15+540)%360-180;
+  let P=[];for(let l=-180;l<=180;l+=4){const la=Math.atan(-Math.cos((l-ls)*Math.PI/180)/Math.tan(dec))*180/Math.PI;P.push(X(l)+","+Math.max(0,Math.min(300,Y(la))).toFixed(1))}
+  const ed=dec<0?"0":"300",night=`M0,${ed} L${P.join(" L")} L720,${ed}z`;
+  $("#wmS").innerHTML=`<g class="gd">${grid}<line x1="0" y1="${Y(0)}" x2="720" y2="${Y(0)}"/></g><g class="ld">${dots}</g><path class="nt" d="${night}"/><line class="nn" x1="${X(ls)}" y1="0" x2="${X(ls)}" y2="300"/><path class="nn2" d="M${X(ls)} 6l5 7-5 7-5-7z"/>${CT.map(c=>`<g class="ct"><circle cx="${X(c[2])}" cy="${Y(c[1])}" r="4.5"/><circle cx="${X(c[2])}" cy="${Y(c[1])}" r="9" class="pu"/><text x="${X(c[2])+(c[0]=="Geneva"?8:c[0]=="London"?-8:0)}" y="${Y(c[1])+(c[0]=="London"?-10:c[0]=="Geneva"?16:-12)}" text-anchor="${c[0]=="Geneva"?"start":c[0]=="London"?"end":"middle"}">${c[0]}</text></g>`).join("")}`;
+  $("#wmT").innerHTML=`Right now the sun stands highest over <b>${Math.abs(Math.round(ls))}° ${ls<0?"W":"E"}</b>. The gold line is the meridian of noon. It crosses the world once a day, and it is where we take our name.`};
+ draw();setInterval(draw,60000)}
+/* logo: a gold marker that circles the ring once a minute, in step with the real second */
+document.querySelectorAll("header svg.lg, .flogo svg.lg").forEach(g=>{const d=new Date();g.insertAdjacentHTML("beforeend",`<circle class="orb" cx="30" cy="2" r="1.7" style="animation-delay:-${(d.getSeconds()+d.getMilliseconds()/1000).toFixed(2)}s"/>`)});
+/* hear the beat */
+{const R=[[18000,"A vintage pace. Five beats a second, the sound of most mid-century watches."],[21600,"Six beats a second. The rate of the Speedmaster's calibre 3861."],[28800,"Eight beats a second. The rate of most modern Rolex movements, and why their seconds hands glide."],[36000,"Ten beats a second. High-beat movements, built for precision."]];let ctx=null,tm=null,next=0,n=0,rate=0;
+ $("#btB").innerHTML=R.map(r=>`<button type="button" data-r="${r[0]}" aria-pressed="false">${r[0].toLocaleString("en-US")}</button>`).join("")+`<button type="button" data-r="0" aria-pressed="false">Stop</button>`;
+ const bal=document.querySelector("#mvS .bal"),stop=()=>{clearInterval(tm);tm=null;rate=0;if(bal)bal.style.animationDuration=""};
+ const tick=t=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type="square";o.frequency.value=n++%2?3100:3900;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.12,t+.002);g.gain.exponentialRampToValueAtTime(.0008,t+.022);o.connect(g).connect(ctx.destination);o.start(t);o.stop(t+.03)};
+ $("#btB").onclick=e=>{const b=e.target.closest("button");if(!b)return;const r=+b.dataset.r;document.querySelectorAll("#btB button").forEach(x=>x.setAttribute("aria-pressed",x==b&&r>0));stop();if(!r){$("#btN").textContent="A movement is named for how many times its balance swings each hour. Tap a rate to hear it.";return}
+  try{ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();ctx.resume()}catch(err){$("#btN").textContent="Sound is not available in this browser.";return}
+  rate=r;const iv=3600/r;next=ctx.currentTime+.05;if(bal)bal.style.animationDuration=iv+"s";$("#btN").textContent=R.find(x=>x[0]==r)[1];tm=setInterval(()=>{while(next<ctx.currentTime+.2){tick(next);next+=iv}},60)};
+ addEventListener("hashchange",()=>{if(rate){stop();document.querySelectorAll("#btB button").forEach(x=>x.setAttribute("aria-pressed","false"))}});document.addEventListener("visibilitychange",()=>{if(document.hidden&&rate){stop();document.querySelectorAll("#btB button").forEach(x=>x.setAttribute("aria-pressed","false"))}})}
+/* birth-year watch */
+{const IC2=[[1904,"Santos-Dumont"],[1917,"Tank"],[1945,"Datejust"],[1953,"Submariner and Explorer"],[1956,"Day-Date"],[1957,"Speedmaster"],[1963,"Daytona"],[1972,"Royal Oak"],[1976,"Nautilus"]];
+ $("#byI").oninput=e=>{const y=+e.target.value,r=$("#byR"),a=$("#byA"),now=new Date().getFullYear();a.innerHTML="";if(!(y>=1900&&y<=now)){r.textContent=e.target.value.length==4?"Enter a year between 1900 and "+now+".":"";return}
+  const L=W.filter(w=>w.y==y),born=IC2.filter(x=>x[0]==y)[0],prev=IC2.filter(x=>x[0]<y).pop();
+  r.innerHTML=(L.length?`<b>${L.length} in hand from ${y}.</b>`:`Nothing from ${y} in hand today.`)+(born?` <span>${y} is the year the ${born[1]} was born.</span>`:prev?` <span>In ${y} the newest icon was the ${prev[1]}, launched in ${prev[0]}.</span>`:"");
+  a.innerHTML=L.length?`<div class="qr" style="display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 12px">${L.map(w=>`<button type="button" class="lk" data-by="${w.id}">${esc(w.b+" "+w.m)}</button>`).join("")}</div>`:`<button type="button" class="btn" data-bs="${y}" style="margin:6px 0 12px">Source a ${y} watch</button>`};
+ $("#byA").onclick=e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.by){openPD(+b.dataset.by);return}$("#sNotes").value="I am looking for a watch made in "+b.dataset.bs+".";location.hash="source"}}
 /* chronograph */
 {let tk="";for(let i=0;i<60;i++)tk+=`<line x1="100" y1="${i%5?10:8}" x2="100" y2="${i%5?15:20}" stroke="currentColor" stroke-width="${i%5?.8:1.8}" transform="rotate(${i*6} 100 100)"/>`;for(let i=0;i<30;i+=5)tk+=`<line x1="100" y1="118" x2="100" y2="122" stroke="currentColor" stroke-width="1" transform="rotate(${i*12} 100 142)"/>`;
  $("#chS").innerHTML=`<circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="1.8"/>${tk}<circle cx="100" cy="142" r="26" fill="none" stroke="currentColor" stroke-width=".8"/><text x="100" y="62" text-anchor="middle" font-family="Archivo,sans-serif" font-size="7.5" letter-spacing="2.5" fill="currentColor">MERIDIAN</text><line id="chM" x1="100" y1="142" x2="100" y2="121" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line id="chH" x1="100" y1="118" x2="100" y2="16" stroke="#c9a84c" stroke-width="1.6" stroke-linecap="round"/><circle cx="100" cy="100" r="3.4" fill="#c9a84c"/>`;
