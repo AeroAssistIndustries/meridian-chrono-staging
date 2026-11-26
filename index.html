@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Meridian Chrono Group</title>
 <meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='29' fill='%23111'/%3E%3Cpath d='M19.5 42V19.5L30 32l10.5-12.5V42' fill='none' stroke='%23fff' stroke-width='3.4'/%3E%3Ccircle cx='30' cy='32' r='2.6' fill='%23c9a84c'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#0c0c0c">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Meridian Chrono Group">
+<meta property="og:description" content="Authenticated luxury watches, private sourcing and trade-ins.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1626624386327-5204714bae9f?auto=format&fit=crop&q=70&w=1200&h=630">
 <meta name="description" content="Meridian Chrono Group: authenticated luxury watches, private sourcing through authorized dealer relationships, and trade-ins.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -412,6 +418,25 @@ h2.big{text-transform:uppercase;letter-spacing:.04em;font-size:clamp(26px,3vw,40
 .fbl .btn{margin-top:14px}
 .accent .ar{background:transparent;border-color:color-mix(in srgb,var(--ink) 35%,transparent)}
 @media(max-width:760px){.fbl .arrows{display:none}}
+
+/* ---- v7 ---- */
+.heart,.heart[aria-pressed=true]{color:#fff;filter:drop-shadow(0 1px 3px rgba(0,0,0,.7))}
+.ctiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.ctiles button{aspect-ratio:4/5;border:0;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:4px;text-align:left;color:#fff;background:#1c1c1c center/cover;cursor:pointer;transition:filter .3s}
+.ctiles button:hover{filter:brightness(1.15)}
+.ctiles b{font:600 16px Archivo,system-ui,sans-serif;font-stretch:125%;text-transform:uppercase;letter-spacing:.04em}
+.ctiles span{font-size:13px;opacity:.85}
+.chip{border:0;background:var(--ink);color:var(--bg);font:600 12px Archivo,system-ui,sans-serif;padding:7px 10px;cursor:pointer;margin-right:10px;text-transform:uppercase;letter-spacing:.04em}
+.pl{display:flex;gap:22px;flex-wrap:wrap}
+dialog#pd{max-width:min(1120px,94vw)}
+.pd .art{cursor:zoom-in}
+.pd .art .ph{transition:transform .25s ease}
+#totop{position:fixed;right:18px;bottom:18px;z-index:25;width:46px;height:46px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:18px;cursor:pointer}
+.tabbar{display:none}
+main>[data-view]:not([hidden]){animation:vfade .4s ease}
+@keyframes vfade{from{opacity:0}to{opacity:1}}
+@media(max-width:760px){.ctiles{grid-template-columns:repeat(2,minmax(0,1fr))}.tabbar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;z-index:28;background:var(--bg);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}.tabbar :is(a,button){display:grid;justify-items:center;gap:2px;padding:8px 0 7px;border:0;background:none;color:var(--ink);font:600 10.5px Archivo,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.04em;text-decoration:none;cursor:pointer}.tabbar svg{width:22px;height:22px}body{padding-bottom:60px}#cmpbar{bottom:72px}#totop{bottom:74px;right:12px}}
+@media(prefers-reduced-motion:reduce){main>[data-view]{animation:none!important}}
 </style>
 </head>
 <body>
@@ -446,6 +471,12 @@ h2.big{text-transform:uppercase;letter-spacing:.04em;font-size:clamp(26px,3vw,40
   <div class="wrap">
     <div class="sechead"><h2>New arrivals</h2><div class="arrows"><button type="button" class="ar" data-row="#newa" data-d="0" aria-label="Previous">&#8592;</button><button type="button" class="ar" data-row="#newa" data-d="1" aria-label="Next">&#8594;</button><a class="more" href="#shop">Shop all</a></div></div>
     <div class="row" id="newa"></div>
+  </div>
+</section>
+<section class="band" style="padding-bottom:0" data-view="home">
+  <div class="wrap">
+    <div class="sechead"><h2>Shop by collection</h2><a class="more" href="#shop">Shop all</a></div>
+    <div class="ctiles" id="ctiles"></div>
   </div>
 </section>
 <section class="band" data-view="home">
@@ -493,6 +524,7 @@ h2.big{text-transform:uppercase;letter-spacing:.04em;font-size:clamp(26px,3vw,40
       <select id="fCond" aria-label="Condition"><option value="">Any condition</option><option>Unworn</option><option>Excellent</option><option>Very good</option></select>
       <select id="fSort" aria-label="Sort"><option value="new">Newest arrivals</option><option value="lo">Price, low to high</option><option value="hi">Price, high to low</option><option value="yr">Year, newest first</option></select>
       <label class="chk"><input type="checkbox" id="fSet"> Box &amp; papers only</label>
+      <button type="button" class="lk" id="clrAll" hidden>Clear all</button>
     </div>
     <div class="count" id="count" aria-live="polite"></div>
     <div class="grid" id="grid"></div>
@@ -711,6 +743,13 @@ h2.big{text-transform:uppercase;letter-spacing:.04em;font-size:clamp(26px,3vw,40
   </div>
 </footer>
 
+<button type="button" id="totop" aria-label="Back to top" hidden>&#8593;</button>
+<nav class="tabbar" aria-label="Quick links">
+  <a href="#shop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="6"/><path d="M9.5 6.5l.8-4h3.4l.8 4M9.5 17.5l.8 4h3.4l.8-4M12 9.5V12l1.6 1.2"/></svg>Shop</a>
+  <button type="button" id="tbSaved"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>Saved</button>
+  <button type="button" id="tbBag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>Bag</button>
+  <button type="button" id="tbMenu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</button>
+</nav>
 <div id="cmpbar" hidden><span id="cmpn"></span><button class="btn" id="cmpgo" type="button">Compare</button><button class="btn ghost" id="cmpclr" type="button">Clear</button></div>
 <dialog id="cd" aria-label="Compare watches"></dialog>
 <dialog id="qd" aria-label="Help me choose"></dialog>
@@ -777,7 +816,7 @@ const U=(id,w)=>"https://images.unsplash.com/photo-"+id+"?auto=format&fit=crop&q
 const pimg=(w,px)=>w.ph?`<img class="ph" loading="lazy" alt="${esc(w.b+" "+w.m)}" src="${U(w.ph,px||700)}" onerror="this.remove()">`:"";
 const svgW=(w,h)=>`<svg viewBox="0 0 120 200" ${h?`height="${h}"`:""} role="img" aria-label="${esc(w.b+" "+w.m)}">${art(w)}</svg>`+pimg(w);
 const ls={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
-let wish=new Set(ls.get("mcg-wish",[])),bag=ls.get("mcg-bag",[]),brand="",onlyWish=false;let cmp=[],shown=[],cur=0,seen=ls.get("mcg-seen",[]);
+let wish=new Set(ls.get("mcg-wish",[])),bag=ls.get("mcg-bag",[]),brand="",onlyWish=false;let cmp=[],shown=[],cur=0,seen=ls.get("mcg-seen",[]);let coll=null;const COL={under15:{t:"Under US$ 15,000",f:w=>w.p!=null&&w.p<15000,ph:"1662384197911-e82189f4dc60"},gold:{t:"Gold",f:w=>/gold/i.test(w.mat),ph:"1790699807407-05e577c9704d"},chrono:{t:"Chronographs",f:w=>!!w.ch,ph:"1539874754764-5a96559165b0"},steel:{t:"Steel sports",f:w=>w.st=="steel"&&!/gold/i.test(w.mat),ph:"1547996160-81dfa63595aa"}};
 const save=()=>{ls.set("mcg-wish",[...wish]);ls.set("mcg-bag",bag);$("#wishN").textContent=wish.size||"";$("#bagN").textContent=bag.length||""};
 /* brands + selects */
 $("#brands").innerHTML=[["","All watches"],...BR.map(b=>[b,b])].map(([v,l])=>`<button type="button" data-b="${esc(v)}" aria-pressed="${v==brand}">${esc(l)}</button>`).join("")+`<button type="button" data-w="1" aria-pressed="false">Saved</button>`;
@@ -786,13 +825,13 @@ const card=w=>`<article class="card" data-id="${w.id}" tabindex="0" aria-label="
 function rows(){[["#newa",[...W].sort((a,b)=>b.y-a.y||b.id-a.id).slice(0,8)],["#feat",[1,8,4,12,10,9,14,13].map(i=>W.find(w=>w.id==i))],["#grails",W.filter(w=>w.p==null||w.p>=40000)]].forEach(([q,L])=>{const el=$(q),sl=el.scrollLeft;el.innerHTML=L.map(card).join("");el.scrollLeft=sl})}
 function rowClick(e){const cb=e.target.closest(".cmp");if(cb){togCmp(+cb.dataset.c);return}const h=e.target.closest(".heart");if(h){const id=+h.dataset.h;wish.has(id)?wish.delete(id):wish.add(id);save();list();return}const c=e.target.closest(".card");if(c)openPD(+c.dataset.id)}
 function list(){const q=$("#q").value.trim().toLowerCase(),pr=$("#fPrice").value,co=$("#fCond").value,so=$("#fSort").value,fs=$("#fSet").checked,sz=$("#fSize").value;
- let r=W.filter(w=>(!brand||w.b==brand)&&(!onlyWish||wish.has(w.id))&&(!co||w.c==co)&&(!fs||w.set=="Box & papers")&&(!q||(w.b+" "+w.m+" "+w.r).toLowerCase().includes(q)));
+ let r=W.filter(w=>(!coll||COL[coll].f(w))&&(!brand||w.b==brand)&&(!onlyWish||wish.has(w.id))&&(!co||w.c==co)&&(!fs||w.set=="Box & papers")&&(!q||(w.b+" "+w.m+" "+w.r).toLowerCase().includes(q)));
  if(pr){const[a,b]=pr.split("-").map(Number);r=r.filter(w=>w.p!=null&&w.p>=a&&w.p<b)}
  if(sz){const[a,b]=sz.split("-").map(Number);r=r.filter(w=>w.mm>=a&&w.mm<b)}
  const P=w=>w.p??1e9;if(so=="lo")r.sort((a,b)=>P(a)-P(b));if(so=="hi")r.sort((a,b)=>P(b)-P(a));if(so=="yr")r.sort((a,b)=>b.y-a.y);
- $("#count").textContent=r.length+(r.length==1?" watch":" watches")+(brand?" from "+brand:"")+(onlyWish?" saved":"");
- shown=r.map(w=>w.id);$("#grid").innerHTML=r.length?r.map(card).join(""):`<div class="empty" style="grid-column:1/-1">No watches match those filters. <button class="btn ghost" id="clr" style="margin-top:12px">Clear filters</button><p style="margin-top:12px">Or <a href="#source">send us a brief</a> and we'll source it.</p></div>`;rows();tick(document.body)}
-function setBrand(b,w){brand=b;onlyWish=!!w;document.querySelectorAll("#brands button").forEach(x=>x.setAttribute("aria-pressed",w?x.dataset.w=="1":x.dataset.b==b&&!x.dataset.w));list()}
+ $("#count").innerHTML=(coll?`<button type="button" class="chip" id="clrC" aria-label="Remove collection filter">${COL[coll].t} ×</button>`:"")+r.length+(r.length==1?" watch":" watches")+(brand?" from "+brand:"")+(onlyWish?" saved":"");
+ shown=r.map(w=>w.id);$("#clrAll").hidden=!(q||pr||co||fs||sz||brand||coll||onlyWish);$("#grid").innerHTML=r.length?r.map(card).join(""):`<div class="empty" style="grid-column:1/-1">No watches match those filters. <button class="btn ghost" id="clr" style="margin-top:12px">Clear filters</button><p style="margin-top:12px">Or <a href="#source">send us a brief</a> and we'll source it.</p></div>`;rows();tick(document.body)}
+function setBrand(b,w){coll=null;brand=b;onlyWish=!!w;document.querySelectorAll("#brands button").forEach(x=>x.setAttribute("aria-pressed",w?x.dataset.w=="1":x.dataset.b==b&&!x.dataset.w));list()}
 $("#brands").addEventListener("click",e=>{const x=e.target.closest("button");if(!x)return;x.dataset.w?setBrand("",true):setBrand(x.dataset.b)});
 ["#q","#fPrice","#fCond","#fSort","#fSet","#fSize"].forEach(id=>$(id).addEventListener("input",list));
 document.querySelectorAll("footer [data-brand]").forEach(a=>a.addEventListener("click",()=>setBrand(a.dataset.brand)));
@@ -801,8 +840,10 @@ $("#grid").addEventListener("keydown",e=>{if(e.target.closest("button"))return;c
 /* product dialog */
 const pd=$("#pd");
 function openPD(id){const w=W.find(x=>x.id==id),inBag=bag.includes(id);if(!w)return;cur=id;seen=[id,...seen.filter(i=>i!=id)].slice(0,6);ls.set("mcg-seen",seen);renderSeen();if(location.hash!="#watch-"+id)location.hash="watch-"+id;
- pd.innerHTML=`<button class="x" aria-label="Close">×</button><div class="pd"><div class="art">${svgW(w)}</div><div class="info"><span class="br" style="color:var(--mute);font-weight:600">${esc(w.b)}</span><h2 style="margin:4px 0 6px">${esc(w.m)}</h2><div class="price${w.p==null?" poa":""}" style="font-size:24px">${usd(w.p)}</div><table class="specs"><tr><td>Reference</td><td>${esc(w.r)}</td></tr><tr><td>Year</td><td>${w.y}</td></tr><tr><td>Condition</td><td>${esc(w.c)}</td></tr><tr><td>Included</td><td>${esc(w.set)}</td></tr><tr><td>Case</td><td>${w.mm} mm, ${esc(w.mat)}</td></tr><tr><td>Movement</td><td>${esc(w.mv)}</td></tr><tr><td>Authentication</td><td>Passed all four checks</td></tr></table><div class="actions">${w.p==null?`<button class="btn" data-a="ask">Request price and photos</button>`:`<button class="btn" data-a="bag">${inBag?"In your bag, view bag":"Reserve this watch"}</button>`}${w.p==null?"":`<button class="btn ghost" data-a="offer">Make an offer</button>`}<button class="btn ghost" data-a="trade">Trade my watch toward this</button><button class="btn ghost" data-a="save">${wish.has(id)?"Saved":"Save for later"}</button></div><p style="font-size:14px;color:var(--mute);margin-top:14px">Reserving holds the watch while a specialist confirms payment and delivery with you.</p><div class="fit"><h3>On your wrist</h3><label for="wr"><span>Wrist size</span><b id="wrv"></b></label><input type="range" id="wr" min="5.5" max="8.5" step="0.25"><svg id="wsvg" viewBox="0 0 300 200" role="img" aria-label="Watch size on your wrist"></svg><p id="wtxt"></p></div><div class="sim"><h3>You may also like</h3><div class="qr">${sim(w).map(x=>`<button type="button" class="qc" data-v="${x.id}"><span class="mini2">${svgW(x)}</span><b>${esc(x.b)}</b><span>${esc(x.m)}</span><span class="price">${usd(x.p)}</span></button>`).join("")}</div></div><div class="pn"><button class="btn ghost" data-a="prev">Previous</button><button class="btn ghost" data-a="next">Next</button></div></div></div>`;drawFit(w);$("#wr").oninput=()=>{ls.set("mcg-wrist",+$("#wr").value);drawFit(w)};tick(pd,true);
+ pd.innerHTML=`<button class="x" aria-label="Close">×</button><div class="pd"><div class="art">${svgW(w)}</div><div class="info"><span class="br" style="color:var(--mute);font-weight:600">${esc(w.b)}</span><h2 style="margin:4px 0 6px">${esc(w.m)}</h2><div class="price${w.p==null?" poa":""}" style="font-size:24px">${usd(w.p)}</div><table class="specs"><tr><td>Reference</td><td>${esc(w.r)}</td></tr><tr><td>Year</td><td>${w.y}</td></tr><tr><td>Condition</td><td>${esc(w.c)}</td></tr><tr><td>Included</td><td>${esc(w.set)}</td></tr><tr><td>Case</td><td>${w.mm} mm, ${esc(w.mat)}</td></tr><tr><td>Movement</td><td>${esc(w.mv)}</td></tr><tr><td>Authentication</td><td>Passed all four checks</td></tr></table><div class="actions">${w.p==null?`<button class="btn" data-a="ask">Request price and photos</button>`:`<button class="btn" data-a="bag">${inBag?"In your bag, view bag":"Reserve this watch"}</button>`}${w.p==null?"":`<button class="btn ghost" data-a="offer">Make an offer</button>`}<button class="btn ghost" data-a="trade">Trade my watch toward this</button><button class="btn ghost" data-a="save">${wish.has(id)?"Saved":"Save for later"}</button><div class="pl"><button type="button" class="lk" data-a="askq">Ask about this watch</button><button type="button" class="lk" data-a="share">Copy details</button></div></div><p style="font-size:14px;color:var(--mute);margin-top:14px">Reserving holds the watch while a specialist confirms payment and delivery with you.</p><div class="fit"><h3>On your wrist</h3><label for="wr"><span>Wrist size</span><b id="wrv"></b></label><input type="range" id="wr" min="5.5" max="8.5" step="0.25"><svg id="wsvg" viewBox="0 0 300 200" role="img" aria-label="Watch size on your wrist"></svg><p id="wtxt"></p></div><div class="sim"><h3>You may also like</h3><div class="qr">${sim(w).map(x=>`<button type="button" class="qc" data-v="${x.id}"><span class="mini2">${svgW(x)}</span><b>${esc(x.b)}</b><span>${esc(x.m)}</span><span class="price">${usd(x.p)}</span></button>`).join("")}</div></div><div class="pn"><button class="btn ghost" data-a="prev">Previous</button><button class="btn ghost" data-a="next">Next</button></div></div></div>`;{const big=pd.querySelector(".art .ph");if(big)big.src=U(w.ph,1400)}drawFit(w);$("#wr").oninput=()=>{ls.set("mcg-wrist",+$("#wr").value);drawFit(w)};tick(pd,true);
  pd.onclick=e=>{const a=e.target.closest("[data-a]");if(e.target.closest(".x")||e.target==pd){pd.close();return}const sv=e.target.closest("[data-v]");if(sv){openPD(+sv.dataset.v);return}if(!a)return;const k=a.dataset.a;
+  if(k=="askq"){pd.close();$("#aMsg").value="I'd like to know more about the "+w.b+" "+w.m+" ("+w.r+").";$("#aTopic").value="Buying a watch";location.hash="contact";return}
+  if(k=="share"){const t=`${w.b} ${w.m} ${w.r}, ${w.y}, ${w.c}, ${usd(w.p)}\n${location.origin+location.pathname}#watch-${id}`;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>a.textContent="Copied",()=>a.textContent="Copy not available here");return}
   if(k=="offer"){if(!pd.querySelector("#of"))a.insertAdjacentHTML("afterend",`<form id="of" class="f" style="grid-template-columns:1fr;padding:14px" novalidate><label>Your offer (US$)<input id="ofA" inputmode="numeric" required></label><label>Name<input id="ofN" required autocomplete="name"></label><label>Email or phone<input id="ofC" required autocomplete="email"></label><button class="btn" type="submit">Send offer</button></form>`);pd.querySelector("#ofA").focus();return}if(k=="prev"||k=="next"){step(k=="next"?1:-1);return}
   if(k=="bag"){if(!bag.includes(id))bag.push(id);save();pd.close();openBag()}
   if(k=="save"){wish.add(id);save();list();a.textContent="Saved"}
@@ -886,13 +927,23 @@ const JB=[["Brands make fewer of their most requested models than buyers want. E
 const JP=["1618215650148-e8e61eae521c","1581063683670-6df2247f1d8e","1638872726444-0579101a60e7"];
 const jart=(w,i)=>`<span class="jw"><svg class="jart" viewBox="0 0 360 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="360" height="150" style="fill:var(--tile)"/><circle cx="270" cy="75" r="110" style="fill:var(--soft)"/><svg x="190" y="-20" width="140" height="210" viewBox="0 0 120 200">${art(w)}</svg></svg><img class="ph" loading="lazy" alt="" src="${U(JP[i],900)}" onerror="this.remove()"></span>`;
 function article(i){$("#artc").innerHTML=`<a class="more" href="#journal">&#8592; All articles</a>${jart(W[i],i)}<h1 class="pg">${esc(J[i].t)}</h1>${JB[i].map(t=>`<p>${esc(t)}</p>`).join("")}<div class="ctas"><a class="btn" href="#shop">Shop the collection</a><a class="btn ghost" href="#source">Source a watch</a></div>`}
+/* collections, quick bar, zoom, shortcuts */
+$("#ctiles").innerHTML=Object.entries(COL).map(([k,c])=>{const n=W.filter(c.f).length;return`<button type="button" data-k="${k}" style="background-image:linear-gradient(transparent 35%,rgba(0,0,0,.8)),url(${U(c.ph,700)})"><b>${c.t}</b><span>${n} ${n==1?"watch":"watches"}</span></button>`}).join("");
+$("#ctiles").addEventListener("click",e=>{const x=e.target.closest("button");if(!x)return;setBrand("");coll=x.dataset.k;list();location.hash="shop"});
+$("#count").addEventListener("click",e=>{if(e.target.closest("#clrC")){coll=null;list()}});
+$("#clrAll").onclick=()=>{$("#q").value="";$("#fPrice").value="";$("#fCond").value="";$("#fSize").value="";$("#fSet").checked=false;setBrand("")};
+$("#tbSaved").onclick=()=>$("#openWish").click();$("#tbBag").onclick=openBag;$("#tbMenu").onclick=()=>mn.showModal();
+$("#totop").onclick=()=>scrollTo({top:0,behavior:"smooth"});
+pd.addEventListener("mousemove",e=>{const a=e.target.closest(".pd .art"),im=pd.querySelector(".pd .art .ph");if(!im)return;if(!a){im.style.transform="";return}const r=a.getBoundingClientRect();im.style.transformOrigin=((e.clientX-r.left)/r.width*100)+"% "+((e.clientY-r.top)/r.height*100)+"%";im.style.transform="scale(2.2)"});
+pd.addEventListener("mouseleave",()=>{const im=pd.querySelector(".pd .art .ph");if(im)im.style.transform=""});
+addEventListener("keydown",e=>{if(e.key=="/"&&!e.target.closest("input,textarea,select")&&!document.querySelector("dialog[open]")){e.preventDefault();if(view!="shop")location.hash="shop";setTimeout(()=>$("#q").focus(),80)}});
 /* journal */
 $("#jr").innerHTML=J.map(j=>{const w=W.find(x=>x.id==[1,2,3][j.w-1]);return`<article><svg class="jart" viewBox="0 0 360 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="360" height="150" style="fill:var(--tile)"/><circle cx="270" cy="75" r="110" style="fill:var(--soft)"/><svg x="190" y="-20" width="140" height="210" viewBox="0 0 120 200">${art(w)}</svg></svg><div><h3>${esc(j.t)}</h3><p>${esc(j.x)}</p></div></article>`}).join("");
 ["#jr","#jr2"].forEach(q=>$(q).innerHTML=J.map((j,i)=>`<a class="jc" href="#article-${i+1}">${jart(W[i],i)}<div><h3>${esc(j.t)}</h3><p>${esc(j.x)}</p><span class="more">Read article</span></div></a>`).join(""));
 save();list();renderCmp();renderSeen();
 const calm=matchMedia("(prefers-reduced-motion:reduce)").matches;
 setInterval(()=>{tick($("#hero"),!calm);if(pd.open)tick(pd,!calm)},1000);setInterval(()=>tick($("#grid")),30000);
-function topfx(){document.body.classList.toggle("over",view=="home"&&scrollY<60);document.documentElement.style.setProperty("--hh",$("header").offsetHeight+"px")}
+function topfx(){const tt=$("#totop");if(tt)tt.hidden=scrollY<900;document.body.classList.toggle("over",view=="home"&&scrollY<60);document.documentElement.style.setProperty("--hh",$("header").offsetHeight+"px")}
 addEventListener("scroll",topfx,{passive:true});addEventListener("resize",topfx);
 const HS=[{e:"Authenticated in-house",t:"Access you can't buy at retail.",b:"Shop now",h:"#shop",w:2,p:"1626624386327-5204714bae9f",g:["#081226","#2a57c4"]},{e:"Private sourcing",t:"Tell us the reference. We'll find it.",b:"Source a watch",h:"#source",w:5,p:"1788125856699-aee0e94d9150",g:["#190f0a","#96603f"]},{e:"Sell or trade",t:"Find out what your watch is worth.",b:"Get started",h:"#sell",w:12,p:"1649357585015-179ed98f513d",g:["#08140f","#3d7d5c"]}];let hi=0;
 function hero(){const x=HS[hi],el=$("#hero");el.style.background=`linear-gradient(105deg,${x.g[0]} 30%,${x.g[1]})`;el.innerHTML=`<svg class="hw" viewBox="0 0 120 200" aria-hidden="true">${art(W.find(w=>w.id==x.w))}</svg>${x.p?`<img class="hp" alt="" src="${U(x.p,1800)}" onerror="this.remove()">`:""}<div class="hv"></div><div class="ht"><p class="eyebrow">${x.e}</p><h1>${x.t}</h1><a class="btn inv" href="${x.h}">${x.b}</a><div class="hdots">${HS.map((_,i)=>`<button type="button" data-i="${i}" aria-label="Slide ${i+1}" aria-pressed="${i==hi}"></button>`).join("")}</div></div>`;tick(el,true)}
