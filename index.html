@@ -797,11 +797,11 @@ footer.band{background-image:repeating-radial-gradient(circle at 0 0,rgba(201,16
 @media(prefers-reduced-motion:reduce){.orb,#wmS .ct .pu{animation:none}}
 
 /* ---- v25 ---- */
-.btiles .bl{max-width:min(150px,80%);max-height:46px;width:auto;height:auto;margin:0 auto 4px;object-fit:contain}
+.btiles .bl{max-width:min(160px,82%);max-height:52px;width:auto;height:auto;margin:0 auto 6px;object-fit:contain;mix-blend-mode:multiply}
 .btiles .hasl b{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 .btiles button{position:relative}
-html[data-theme=dark] .btiles .bl{filter:invert(1) grayscale(1)}
-@media(prefers-color-scheme:dark){html:not([data-theme=light]) .btiles .bl{filter:invert(1) grayscale(1)}}
+html[data-theme=dark] .btiles .bl{filter:grayscale(1) invert(1);mix-blend-mode:screen}
+@media(prefers-color-scheme:dark){html:not([data-theme=light]) .btiles .bl{filter:grayscale(1) invert(1);mix-blend-mode:screen}}
 </style>
 </head>
 <body>
@@ -1647,7 +1647,7 @@ document.querySelectorAll("header svg.lg, .flogo svg.lg").forEach(g=>{const d=ne
   a.innerHTML=L.length?`<div class="qr" style="display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 12px">${L.map(w=>`<button type="button" class="lk" data-by="${w.id}">${esc(w.b+" "+w.m)}</button>`).join("")}</div>`:`<button type="button" class="btn" data-bs="${y}" style="margin:6px 0 12px">Source a ${y} watch</button>`};
  $("#byA").onclick=e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.by){openPD(+b.dataset.by);return}$("#sNotes").value="I am looking for a watch made in "+b.dataset.bs+".";location.hash="source"}}
 /* brand tiles: show a logo file when one has been added to brand/logos, otherwise keep the name in type */
-{const LF={"Rolex":"Rolex.svg","Patek Philippe":"Patek_Philippe.png","Audemars Piguet":"Audemars_Piguet.svg","Omega":"Omega.svg","Cartier":"Cartier.png"};
+{const LF={"Rolex":"Rolex.png","Patek Philippe":"Patek_Philippe.png","Audemars Piguet":"Audemars_Piguet.png","Omega":"Omega.png","Cartier":"Cartier.png"};
  document.querySelectorAll("#btiles button").forEach(b=>{const t=b.querySelector("b"),f=t&&LF[t.textContent.trim()];if(!f)return;const im=new Image();im.className="bl";im.alt=t.textContent.trim();im.onload=()=>{b.classList.add("hasl");b.insertBefore(im,t)};im.src="brand/logos/"+f})}
 /* chronograph */
 {let tk="";for(let i=0;i<60;i++)tk+=`<line x1="100" y1="${i%5?10:8}" x2="100" y2="${i%5?15:20}" stroke="currentColor" stroke-width="${i%5?.8:1.8}" transform="rotate(${i*6} 100 100)"/>`;for(let i=0;i<30;i+=5)tk+=`<line x1="100" y1="118" x2="100" y2="122" stroke="currentColor" stroke-width="1" transform="rotate(${i*12} 100 142)"/>`;
