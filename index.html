@@ -385,6 +385,27 @@ h2.big{text-transform:uppercase;letter-spacing:.04em;font-size:clamp(26px,3vw,40
 .mnav a{text-transform:uppercase;font-size:14px;letter-spacing:.04em}
 @media(max-width:980px){.brand{border:0;padding-right:0}.icons{border:0;padding-left:0}}
 @media(max-width:760px){.util{grid-template-columns:1fr;text-align:center}.util>span:first-child,.util>a{display:none}.util span.um{display:block}.fb{grid-template-columns:1fr;gap:20px}.fbl .btn{margin-top:6px}.hw{right:-34%;height:112%;top:27%}.hs::after{content:"";position:absolute;inset:38% 0 0;background:linear-gradient(transparent,rgba(4,7,14,.92) 55%)}.hs{min-height:min(84vh,640px)}.ht{padding-bottom:36px}}
+
+/* ---- v6: photography ---- */
+.art,.mini,.mini2,.mini3,.jw{position:relative;overflow:hidden}
+.jw{display:block}
+.ph{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover}
+.card .ph{transition:transform .6s ease}
+.card:hover .ph{transform:scale(1.05)}
+.accent .art{border-radius:10px}
+.hp{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;animation:hfade .9s ease both}
+.hv{position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,7,14,.86),rgba(4,7,14,.35) 55%,rgba(4,7,14,.05))}
+@keyframes hfade{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
+.strip{display:block;width:100%;aspect-ratio:21/8;object-fit:cover;margin:26px 0 6px}
+.two .strip{aspect-ratio:4/3;margin-top:28px}
+.promo>div:first-child{background:linear-gradient(rgba(8,8,8,.74),rgba(8,8,8,.74)),url(https://images.unsplash.com/photo-1618215650148-e8e61eae521c?auto=format&fit=crop&q=70&w=1200) center/cover,#0c0c0c}
+.mq{overflow:hidden;background:#0c0c0c;color:#f1f1ef;font:600 12px Archivo,system-ui,sans-serif;font-stretch:125%;text-transform:uppercase;letter-spacing:.08em;padding:13px 0;white-space:nowrap}
+.mq>div{display:inline-flex;gap:56px;padding-left:56px;animation:mq 60s linear infinite}
+.mq span::after{content:"";display:inline-block;width:5px;height:5px;background:#c9a84c;transform:rotate(45deg);margin-left:56px;vertical-align:middle}
+@keyframes mq{to{transform:translateX(-50%)}}
+.btiles{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media(max-width:760px){.btiles{grid-template-columns:repeat(2,minmax(0,1fr))}.strip{aspect-ratio:16/9}}
+@media(prefers-reduced-motion:reduce){.mq>div,.hp{animation:none}.card .ph{transition:none}}
 </style>
 </head>
 <body>
@@ -408,6 +429,7 @@ h2.big{text-transform:uppercase;letter-spacing:.04em;font-size:clamp(26px,3vw,40
 
 
 
+<div class="mq" data-view="home" aria-hidden="true"><div><span>Authenticated in-house</span><span>Sourced to order</span><span>Sell or trade</span><span>By appointment</span><span>Private clients worldwide</span><span>Authenticated in-house</span><span>Sourced to order</span><span>Sell or trade</span><span>By appointment</span><span>Private clients worldwide</span><span>Authenticated in-house</span><span>Sourced to order</span><span>Sell or trade</span><span>By appointment</span><span>Private clients worldwide</span><span>Authenticated in-house</span><span>Sourced to order</span><span>Sell or trade</span><span>By appointment</span><span>Private clients worldwide</span></div></div>
 <section class="band accent" data-view="home">
   <div class="wrap fb">
     <div class="fbl"><h2>Featured picks</h2><p>The pieces our clients ask about most, in hand and ready to ship.</p><a class="btn" href="#shop">Shop now</a></div>
@@ -443,7 +465,7 @@ h2.big{text-transform:uppercase;letter-spacing:.04em;font-size:clamp(26px,3vw,40
 
 <section class="band" data-view="home">
   <div class="wrap two">
-    <div><h2 class="big">Built on eight years of collecting.</h2></div>
+    <div><h2 class="big">Built on eight years of collecting.</h2><img class="strip" alt="" src="https://images.unsplash.com/photo-1604242692760-2f7b0c26856d?auto=format&fit=crop&q=70&w=1000" onerror="this.remove()"></div>
     <div><p class="lede">Meridian began as founder Rushik Dave's own collection. The authorized dealer relationships he built as a collector are how we place allocated pieces with clients today, and why most of what we sell never reaches a public listing.</p><div class="ctas"><a class="btn" href="#about">Our story</a><a class="btn ghost" href="#contact">Book an appointment</a></div></div>
   </div>
 </section>
@@ -525,6 +547,7 @@ h2.big{text-transform:uppercase;letter-spacing:.04em;font-size:clamp(26px,3vw,40
 <section class="band" data-view="authentication" id="authentication" style="background:var(--panel);border-block:1px solid var(--line)">
   <div class="wrap">
     <div class="sechead"><h2>How every watch is authenticated</h2><p class="lede" style="margin:0">Nothing is offered until it has passed all four checks.</p></div>
+    <img class="strip" alt="" src="https://images.unsplash.com/photo-1602103146071-b3b209c8ca9b?auto=format&fit=crop&q=70&w=1600" onerror="this.remove()">
     <div class="auth">
       <div><svg viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="12" y="8" width="28" height="36" rx="2"/><path d="M18 17h16M18 23h16M18 29h10"/><circle cx="34" cy="36" r="5"/></svg><h3>Provenance</h3><p>Serial and reference matched to the warranty card and dealer records, and checked against stolen-watch registries.</p></div>
       <div><svg viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="26" cy="26" r="16"/><circle cx="26" cy="26" r="6"/><path d="M26 10v4M26 38v4M10 26h4M38 26h4"/></svg><h3>Movement</h3><p>Caseback opened, calibre identified and inspected, then timed for rate and amplitude.</p></div>
@@ -538,6 +561,7 @@ h2.big{text-transform:uppercase;letter-spacing:.04em;font-size:clamp(26px,3vw,40
   <div class="wrap">
     <p class="eyebrow">About us</p>
     <h1 class="pg">A collector's network, opened to clients.</h1>
+    <img class="strip" alt="" src="https://images.unsplash.com/photo-1731446451263-fc3881d4973d?auto=format&fit=crop&q=70&w=1600" onerror="this.remove()">
     <div class="two" style="margin-top:28px">
       <div>
         <p class="lede">Meridian Chrono Group is a private watch acquisition firm. We find, authenticate and deliver the watches our clients ask for, from current steel sports models to pieces that rarely change hands.</p>
@@ -677,7 +701,7 @@ h2.big{text-transform:uppercase;letter-spacing:.04em;font-size:clamp(26px,3vw,40
       <div><h4>Learn</h4><a href="#journal">Journal</a><a href="#journal">Glossary</a><a href="#faq">Questions</a></div>
       <div><h4>Company</h4><a href="#about">About us</a><a href="#contact">Contact</a><a href="#terms">Terms of use</a><a href="#privacy">Privacy policy</a></div>
     </div>
-    <div class="legal">© 2026 Meridian Chrono Group. Rolex, Patek Philippe, Audemars Piguet, Richard Mille, Omega, Cartier, Vacheron Constantin, F.P. Journe and all other brand names and model names are trademarks of their respective owners and are used for identification only. Meridian Chrono Group is an independent dealer and is not affiliated with, sponsored or endorsed by any watch brand shown. Watches sold are pre-owned or unworn, sourced on the secondary market.</div>
+    <div class="legal">© 2026 Meridian Chrono Group. Rolex, Patek Philippe, Audemars Piguet, Omega, Cartier and all other brand names and model names are trademarks of their respective owners and are used for identification only. Meridian Chrono Group is an independent dealer and is not affiliated with, sponsored or endorsed by any watch brand shown. Watches sold are pre-owned or unworn, sourced on the secondary market.</div>
   </div>
 </footer>
 
@@ -691,22 +715,21 @@ h2.big{text-transform:uppercase;letter-spacing:.04em;font-size:clamp(26px,3vw,40
 <script>
 {
 const W=[
- {id:1,b:"Rolex",m:"Cosmograph Daytona",r:"126500LN",y:2024,c:"Unworn",set:"Box & papers",mm:40,mat:"Oystersteel",mv:"Calibre 4131, automatic",p:31500,sh:"round",cs:"steel",d:"#f4f1ea",bz:"cer",bc:["#141414","#141414"],ch:1,st:"steel"},
- {id:2,b:"Patek Philippe",m:"Nautilus",r:"5711/1A-010",y:2019,c:"Excellent",set:"Box & papers",mm:40,mat:"Stainless steel",mv:"Calibre 26-330 S C, automatic",p:118000,sh:"cush",cs:"steel",d:"#1f3b63",st:"steel"},
- {id:3,b:"Audemars Piguet",m:"Royal Oak Selfwinding",r:"15510ST.OO.1320ST.06",y:2023,c:"Excellent",set:"Box & papers",mm:41,mat:"Stainless steel",mv:"Calibre 4302, automatic",p:43900,sh:"oct",cs:"steel",d:"#24406b",st:"steel",dt:1},
- {id:4,b:"Rolex",m:"GMT-Master II",r:"126710BLRO",y:2022,c:"Excellent",set:"Box & papers",mm:40,mat:"Oystersteel",mv:"Calibre 3285, automatic",p:21900,sh:"round",cs:"steel",d:"#121212",bz:"cer",bc:["#1d3f8f","#a3192b"],st:"steel",dt:1},
- {id:5,b:"Rolex",m:"Day-Date 40",r:"228235",y:2021,c:"Very good",set:"Box & papers",mm:40,mat:"18k Everose gold",mv:"Calibre 3255, automatic",p:44500,sh:"round",cs:"rose",d:"#c98d6c",bz:"flute",st:"rose"},
- {id:6,b:"Richard Mille",m:"RM 035 Rafael Nadal",r:"RM035-02",y:2020,c:"Excellent",set:"Box & papers",mm:48,mat:"Carbon TPT",mv:"Calibre RMUL1, manual",p:null,sh:"ton",cs:"carbon",d:"#1a1a1a",st:"rubber"},
- {id:7,b:"Patek Philippe",m:"Aquanaut",r:"5167A-001",y:2022,c:"Unworn",set:"Box & papers",mm:40,mat:"Stainless steel",mv:"Calibre 26-330 S C, automatic",p:71500,sh:"cush",cs:"steel",d:"#2b2b2b",st:"rubber",dt:1},
- {id:8,b:"Rolex",m:"Submariner Date",r:"126610LN",y:2023,c:"Excellent",set:"Box & papers",mm:41,mat:"Oystersteel",mv:"Calibre 3235, automatic",p:14250,sh:"round",cs:"steel",d:"#101010",bz:"cer",bc:["#111","#111"],st:"steel",dt:1},
- {id:9,b:"Omega",m:"Speedmaster Moonwatch Professional",r:"310.30.42.50.01.002",y:2024,c:"Unworn",set:"Box & papers",mm:42,mat:"Stainless steel",mv:"Calibre 3861, manual",p:6950,sh:"round",cs:"steel",d:"#111",bz:"cer",bc:["#161616","#161616"],ch:1,st:"steel"},
- {id:10,b:"Cartier",m:"Santos de Cartier Large",r:"WSSA0018",y:2023,c:"Excellent",set:"Box & papers",mm:39.8,mat:"Steel",mv:"Calibre 1847 MC, automatic",p:6600,sh:"sq",cs:"steel",d:"#efeae0",st:"steel"},
- {id:11,b:"Vacheron Constantin",m:"Overseas Self-Winding",r:"4500V/110A-B128",y:2021,c:"Very good",set:"Box & papers",mm:41,mat:"Stainless steel",mv:"Calibre 5100, automatic",p:29500,sh:"round",cs:"steel",d:"#2a4f86",bz:"flute",st:"steel",dt:1},
- {id:12,b:"Rolex",m:"Datejust 41",r:"126334",y:2023,c:"Unworn",set:"Box & papers",mm:41,mat:"Oystersteel and white gold",mv:"Calibre 3235, automatic",p:13900,sh:"round",cs:"steel",d:"#7fa88f",bz:"flute",st:"steel",dt:1},
- {id:13,b:"Patek Philippe",m:"Calatrava",r:"5227G-010",y:2020,c:"Excellent",set:"Papers only",mm:39,mat:"18k white gold",mv:"Calibre 324 S C, automatic",p:31500,sh:"round",cs:"steel",d:"#f2eee4",st:"leather",dt:1},
- {id:14,b:"Rolex",m:"Explorer II",r:"226570",y:2022,c:"Excellent",set:"Box & papers",mm:42,mat:"Oystersteel",mv:"Calibre 3285, automatic",p:10750,sh:"round",cs:"steel",d:"#f5f3ee",bz:"steelb",st:"steel",dt:1},
- {id:15,b:"Audemars Piguet",m:"Royal Oak Offshore Chronograph",r:"26420SO.OO.A600CA.01",y:2021,c:"Very good",set:"Box & papers",mm:43,mat:"Stainless steel",mv:"Calibre 4401, automatic",p:36500,sh:"oct",cs:"steel",d:"#1b1b1b",ch:1,st:"rubber",dt:1},
- {id:16,b:"F.P. Journe",m:"Chronomètre Bleu",r:"CB 39",y:2019,c:"Excellent",set:"Box & papers",mm:39,mat:"Tantalum",mv:"Calibre 1304, manual",p:null,sh:"round",cs:"tant",d:"#1f4fa8",st:"leather"}
+ {id:1,b:"Rolex",m:"Cosmograph Daytona",r:"126500LN",y:2024,c:"Unworn",set:"Box & papers",mm:40,mat:"Oystersteel",mv:"Calibre 4131, automatic",p:31500,ph:"1657104996708-044ef9812f85",sh:"round",cs:"steel",d:"#f4f1ea",bz:"cer",bc:["#141414","#141414"],ch:1,st:"steel"},
+ {id:2,b:"Patek Philippe",m:"Nautilus",r:"5711/1A-010",y:2019,c:"Excellent",set:"Box & papers",mm:40,mat:"Stainless steel",mv:"Calibre 26-330 S C, automatic",p:118000,ph:"1626624386327-5204714bae9f",sh:"cush",cs:"steel",d:"#1f3b63",st:"steel"},
+ {id:3,b:"Audemars Piguet",m:"Royal Oak",r:"14790BA",y:1998,c:"Very good",set:"Papers only",mm:36,mat:"18k yellow gold",mv:"Calibre 2225, automatic",p:null,ph:"1638872726444-0579101a60e7",sh:"oct",cs:"gold",d:"#d9c27a",st:"steel",dt:1},
+ {id:4,b:"Rolex",m:"Submariner Date",r:"126618LB",y:2022,c:"Excellent",set:"Box & papers",mm:41,mat:"18k yellow gold",mv:"Calibre 3235, automatic",p:41500,ph:"1730757679771-b53e798846cf",sh:"round",cs:"gold",d:"#1d3f8f",bz:"cer",bc:["#1d3f8f","#1d3f8f"],st:"steel",dt:1},
+ {id:5,b:"Rolex",m:"Day-Date 36",r:"18238",y:1995,c:"Very good",set:"Box & papers",mm:36,mat:"18k yellow gold",mv:"Calibre 3155, automatic",p:21500,ph:"1790699795816-375f7165dc96",sh:"round",cs:"gold",d:"#d9c27a",bz:"flute",st:"steel"},
+ {id:6,b:"Patek Philippe",m:"Perpetual Calendar",r:"5320G-001",y:2021,c:"Excellent",set:"Box & papers",mm:40,mat:"18k white gold",mv:"Calibre 324 S Q, automatic",p:null,ph:"1663564307062-8b6fda73705d",sh:"round",cs:"steel",d:"#f2eee4",st:"leather"},
+ {id:7,b:"Rolex",m:"Cosmograph Daytona",r:"116505",y:2020,c:"Excellent",set:"Box & papers",mm:40,mat:"18k Everose gold",mv:"Calibre 4130, automatic",p:46500,ph:"1587925358603-c2eea5305bbc",sh:"round",cs:"rose",d:"#e8b8a0",bz:"steelb",ch:1,st:"rose"},
+ {id:8,b:"Rolex",m:"Submariner Date",r:"126610LN",y:2023,c:"Excellent",set:"Box & papers",mm:41,mat:"Oystersteel",mv:"Calibre 3235, automatic",p:14250,ph:"1662384197911-e82189f4dc60",sh:"round",cs:"steel",d:"#101010",bz:"cer",bc:["#111","#111"],st:"steel",dt:1},
+ {id:9,b:"Omega",m:"Speedmaster Moonwatch Professional",r:"310.30.42.50.01.002",y:2024,c:"Unworn",set:"Box & papers",mm:42,mat:"Stainless steel",mv:"Calibre 3861, manual",p:6950,ph:"1588524789663-e6163803c589",sh:"round",cs:"steel",d:"#111",bz:"cer",bc:["#161616","#161616"],ch:1,st:"steel"},
+ {id:10,b:"Cartier",m:"Santos-Dumont Large",r:"WSSA0022",y:2023,c:"Excellent",set:"Box & papers",mm:31.4,mat:"Steel",mv:"Calibre 430 MC, manual",p:5400,ph:"1773414686135-cffd9fbe3590",sh:"sq",cs:"steel",d:"#efeae0",st:"leather"},
+ {id:11,b:"Cartier",m:"Tank Louis Cartier",r:"WGTA0011",y:2022,c:"Excellent",set:"Box & papers",mm:25.5,mat:"18k yellow gold",mv:"Calibre 1917 MC, manual",p:11900,ph:"1581063683670-6df2247f1d8e",sh:"sq",cs:"gold",d:"#efeae0",st:"leather"},
+ {id:12,b:"Rolex",m:"Datejust 41",r:"126334",y:2023,c:"Unworn",set:"Box & papers",mm:41,mat:"Oystersteel and white gold",mv:"Calibre 3235, automatic",p:13900,ph:"1766595898967-22c61e0be796",sh:"round",cs:"steel",d:"#7fa88f",bz:"flute",st:"steel",dt:1},
+ {id:13,b:"Rolex",m:"Explorer 40",r:"224270",y:2023,c:"Excellent",set:"Box & papers",mm:40,mat:"Oystersteel",mv:"Calibre 3230, automatic",p:8450,ph:"1587836374828-4dbafa94cf0e",sh:"round",cs:"steel",d:"#101010",bz:"steelb",st:"steel"},
+ {id:14,b:"Rolex",m:"Submariner Date",r:"126613LN",y:2022,c:"Excellent",set:"Box & papers",mm:41,mat:"Oystersteel and yellow gold",mv:"Calibre 3235, automatic",p:15900,ph:"1639006570490-79c0c53f1080",sh:"round",cs:"gold",d:"#101010",bz:"cer",bc:["#111","#111"],st:"steel",dt:1},
+ {id:15,b:"Rolex",m:"Datejust 36",r:"126231",y:2021,c:"Very good",set:"Box & papers",mm:36,mat:"Oystersteel and Everose gold",mv:"Calibre 3235, automatic",p:14500,ph:"1773414685933-bfc3ccf89a3c",sh:"round",cs:"rose",d:"#5a3a2e",bz:"flute",st:"rose",dt:1}
 ];
 const BR=[...new Set(W.map(w=>w.b))];
 const J=[
@@ -744,7 +767,9 @@ function art(w){
  else s+=`<path d="M60 100l-16-18M60 100l20-12" stroke="#ddd" stroke-width="2.4" stroke-linecap="round"/>`;
  s+=`<ellipse cx="${cx-14}" cy="${cy-18}" rx="20" ry="9" fill="#fff" opacity=".08" transform="rotate(-30 ${cx-14} ${cy-18})"/>`;
  return s}
-const svgW=(w,h)=>`<svg viewBox="0 0 120 200" ${h?`height="${h}"`:""} role="img" aria-label="${esc(w.b+" "+w.m)}">${art(w)}</svg>`;
+const U=(id,w)=>"https://images.unsplash.com/photo-"+id+"?auto=format&fit=crop&q=70&w="+w;
+const pimg=(w,px)=>w.ph?`<img class="ph" loading="lazy" alt="${esc(w.b+" "+w.m)}" src="${U(w.ph,px||700)}" onerror="this.remove()">`:"";
+const svgW=(w,h)=>`<svg viewBox="0 0 120 200" ${h?`height="${h}"`:""} role="img" aria-label="${esc(w.b+" "+w.m)}">${art(w)}</svg>`+pimg(w);
 const ls={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 let wish=new Set(ls.get("mcg-wish",[])),bag=ls.get("mcg-bag",[]),brand="",onlyWish=false;let cmp=[],shown=[],cur=0,seen=ls.get("mcg-seen",[]);
 const save=()=>{ls.set("mcg-wish",[...wish]);ls.set("mcg-bag",bag);$("#wishN").textContent=wish.size||"";$("#bagN").textContent=bag.length||""};
@@ -852,18 +877,19 @@ hook("#apptForm",["#aName","#aContact"],()=>`Appointment request\nName: ${$("#aN
 const G=[["Authorized dealer (AD)","A retailer appointed by a watch brand to sell its new watches."],["Allocation","The limited supply of a model that a dealer receives, usually offered to established clients first."],["Reference number","The maker's code for a specific combination of model, case material, dial and bracelet."],["Full set","A watch sold with its original box, warranty card or papers, and accessories."],["Box and papers","The original presentation box and the warranty card or certificate issued at first sale."],["Calibre","The movement inside the watch, identified by the maker's model number."],["Automatic","A mechanical movement wound by the motion of the wearer's wrist."],["Manual wind","A mechanical movement wound by turning the crown."],["Chronograph","A watch with a built-in stopwatch, usually with sub-dials and pushers."],["GMT","A complication that shows a second time zone with an extra hand and a 24-hour scale."],["Complication","Any function beyond hours, minutes and seconds, such as a date, a chronograph or a moon phase."],["Bezel","The ring around the crystal. It can be fixed, or rotate to time a dive or track a second time zone."],["Lug to lug","The length of the case from the tips of the top lugs to the bottom lugs, which decides how a watch sits on the wrist."],["Unworn","A pre-owned watch that has not been worn since it was first sold."],["Service history","The record of maintenance carried out on a watch, ideally with receipts."],["Patina","The natural ageing of a dial, hands or case, which many collectors value on vintage pieces."]];
 const gl=()=>{const q=$("#gq").value.trim().toLowerCase(),L=G.filter(g=>!q||(g[0]+" "+g[1]).toLowerCase().includes(q));$("#gl").innerHTML=L.length?L.map(g=>`<div><dt>${esc(g[0])}</dt><dd>${esc(g[1])}</dd></div>`).join(""):`<p style="color:var(--mute)">No terms match that search.</p>`};$("#gq").addEventListener("input",gl);gl();
 const JB=[["Brands make fewer of their most requested models than buyers want. Each authorized dealer receives a limited number, called its allocation, and decides which clients are offered them.","Dealers usually offer those watches first to clients with a purchase history. A buyer who is new to a dealer can wait a long time for a popular steel sports model, sometimes years.","That leaves two routes. One is to build a relationship with a dealer over time. The other is the secondary market, where the same watch is available now at the market price, which can sit above or below retail depending on the model.","Meridian's sourcing rests on dealer relationships built over more than eight years of collecting. Send us a brief and we look for the watch through that network first."],["A full set is the watch with everything it was first sold with: the inner and outer boxes, the warranty card or certificate, the booklets, the hang tags and any spare bracelet links.","The warranty card matters most. It records the reference, the serial number and the date and place of the first sale, which helps confirm where a watch came from.","A full set generally sells for more than the same watch on its own, and it is easier to resell later. How much more depends on the brand, the model and the age of the watch.","Older and vintage watches often trade without papers, and there condition and originality count for more. Whatever you own, keep the set together and keep your service receipts with it."],["An Audemars Piguet reference looks long, but it reads in blocks. Take 15510ST.OO.1320ST.06.","The first digits, 15510, identify the model. The letters that follow give the case material: ST for steel, OR for pink gold, BA for yellow gold, BC for white gold, TI for titanium and CE for ceramic.","The middle pair shows gem setting, and OO means the case has none. The next block identifies the bracelet or strap and its material, and the last digits identify the dial version.","Two watches that look alike can carry different references and different values, so check that the reference on the papers matches the watch in front of you."]];
-const jart=w=>`<svg class="jart" viewBox="0 0 360 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="360" height="150" style="fill:var(--tile)"/><circle cx="270" cy="75" r="110" style="fill:var(--soft)"/><svg x="190" y="-20" width="140" height="210" viewBox="0 0 120 200">${art(w)}</svg></svg>`;
-function article(i){$("#artc").innerHTML=`<a class="more" href="#journal">&#8592; All articles</a>${jart(W[i])}<h1 class="pg">${esc(J[i].t)}</h1>${JB[i].map(t=>`<p>${esc(t)}</p>`).join("")}<div class="ctas"><a class="btn" href="#shop">Shop the collection</a><a class="btn ghost" href="#source">Source a watch</a></div>`}
+const JP=["1618215650148-e8e61eae521c","1581063683670-6df2247f1d8e","1638872726444-0579101a60e7"];
+const jart=(w,i)=>`<span class="jw"><svg class="jart" viewBox="0 0 360 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="360" height="150" style="fill:var(--tile)"/><circle cx="270" cy="75" r="110" style="fill:var(--soft)"/><svg x="190" y="-20" width="140" height="210" viewBox="0 0 120 200">${art(w)}</svg></svg><img class="ph" loading="lazy" alt="" src="${U(JP[i],900)}" onerror="this.remove()"></span>`;
+function article(i){$("#artc").innerHTML=`<a class="more" href="#journal">&#8592; All articles</a>${jart(W[i],i)}<h1 class="pg">${esc(J[i].t)}</h1>${JB[i].map(t=>`<p>${esc(t)}</p>`).join("")}<div class="ctas"><a class="btn" href="#shop">Shop the collection</a><a class="btn ghost" href="#source">Source a watch</a></div>`}
 /* journal */
 $("#jr").innerHTML=J.map(j=>{const w=W.find(x=>x.id==[1,2,3][j.w-1]);return`<article><svg class="jart" viewBox="0 0 360 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="360" height="150" style="fill:var(--tile)"/><circle cx="270" cy="75" r="110" style="fill:var(--soft)"/><svg x="190" y="-20" width="140" height="210" viewBox="0 0 120 200">${art(w)}</svg></svg><div><h3>${esc(j.t)}</h3><p>${esc(j.x)}</p></div></article>`}).join("");
-["#jr","#jr2"].forEach(q=>$(q).innerHTML=J.map((j,i)=>`<a class="jc" href="#article-${i+1}">${jart(W[i])}<div><h3>${esc(j.t)}</h3><p>${esc(j.x)}</p><span class="more">Read article</span></div></a>`).join(""));
+["#jr","#jr2"].forEach(q=>$(q).innerHTML=J.map((j,i)=>`<a class="jc" href="#article-${i+1}">${jart(W[i],i)}<div><h3>${esc(j.t)}</h3><p>${esc(j.x)}</p><span class="more">Read article</span></div></a>`).join(""));
 save();list();renderCmp();renderSeen();
 const calm=matchMedia("(prefers-reduced-motion:reduce)").matches;
 setInterval(()=>{tick($("#hero"),!calm);if(pd.open)tick(pd,!calm)},1000);setInterval(()=>tick($("#grid")),30000);
 function topfx(){document.body.classList.toggle("over",view=="home"&&scrollY<60);document.documentElement.style.setProperty("--hh",$("header").offsetHeight+"px")}
 addEventListener("scroll",topfx,{passive:true});addEventListener("resize",topfx);
-const HS=[{e:"Authenticated in-house",t:"Access you can't buy at retail.",b:"Shop now",h:"#shop",w:2,g:["#081226","#2a57c4"]},{e:"Private sourcing",t:"Tell us the reference. We'll find it.",b:"Source a watch",h:"#source",w:5,g:["#190f0a","#96603f"]},{e:"Sell or trade",t:"Find out what your watch is worth.",b:"Get started",h:"#sell",w:12,g:["#08140f","#3d7d5c"]}];let hi=0;
-function hero(){const x=HS[hi],el=$("#hero");el.style.background=`linear-gradient(105deg,${x.g[0]} 30%,${x.g[1]})`;el.innerHTML=`<svg class="hw" viewBox="0 0 120 200" aria-hidden="true">${art(W.find(w=>w.id==x.w))}</svg><div class="ht"><p class="eyebrow">${x.e}</p><h1>${x.t}</h1><a class="btn inv" href="${x.h}">${x.b}</a><div class="hdots">${HS.map((_,i)=>`<button type="button" data-i="${i}" aria-label="Slide ${i+1}" aria-pressed="${i==hi}"></button>`).join("")}</div></div>`;tick(el,true)}
+const HS=[{e:"Authenticated in-house",t:"Access you can't buy at retail.",b:"Shop now",h:"#shop",w:2,p:"1626624386327-5204714bae9f",g:["#081226","#2a57c4"]},{e:"Private sourcing",t:"Tell us the reference. We'll find it.",b:"Source a watch",h:"#source",w:5,p:"1788125856699-aee0e94d9150",g:["#190f0a","#96603f"]},{e:"Sell or trade",t:"Find out what your watch is worth.",b:"Get started",h:"#sell",w:12,p:"1649357585015-179ed98f513d",g:["#08140f","#3d7d5c"]}];let hi=0;
+function hero(){const x=HS[hi],el=$("#hero");el.style.background=`linear-gradient(105deg,${x.g[0]} 30%,${x.g[1]})`;el.innerHTML=`<svg class="hw" viewBox="0 0 120 200" aria-hidden="true">${art(W.find(w=>w.id==x.w))}</svg>${x.p?`<img class="hp" alt="" src="${U(x.p,1800)}" onerror="this.remove()">`:""}<div class="hv"></div><div class="ht"><p class="eyebrow">${x.e}</p><h1>${x.t}</h1><a class="btn inv" href="${x.h}">${x.b}</a><div class="hdots">${HS.map((_,i)=>`<button type="button" data-i="${i}" aria-label="Slide ${i+1}" aria-pressed="${i==hi}"></button>`).join("")}</div></div>`;tick(el,true)}
 let ht=calm?0:setInterval(()=>{if(view=="home"&&!document.hidden&&!document.querySelector("dialog[open]")){hi=(hi+1)%HS.length;hero()}},7000);
 $("#hero").addEventListener("click",e=>{const d=e.target.closest("[data-i]");if(d){hi=+d.dataset.i;hero();clearInterval(ht)}});hero();
 if(/^#watch-/.test(location.hash))setView("shop");route();
