@@ -907,6 +907,38 @@ main:focus{outline:none}
 #cd tr.df th::after{content:"";display:inline-block;width:6px;height:6px;background:var(--gold-500);transform:rotate(45deg);margin-left:8px;vertical-align:middle}
 #cd tr.df td{font-weight:600}
 @media(max-width:760px){#lsP{font-size:15.5px;min-height:120px}.lsn{padding:36px 20px}}
+
+/* ---- v33 footer ---- */
+.f1{display:grid;justify-items:center;text-align:center;gap:10px;padding:8px 0 30px}
+.f1 .flogo .lg{height:92px}
+.f1 p{margin:6px 0 0;color:#b5b3ae;font-size:15px}
+.f1t{font:600 11.5px Archivo,system-ui,sans-serif;font-stretch:125%;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-300)}
+.f2{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid rgba(210,178,116,.28)}
+.f2 a{display:flex;align-items:center;gap:14px;padding:20px 18px;text-decoration:none;border-left:1px solid rgba(210,178,116,.18)}
+.f2 a:first-child{border-left:0}
+.f2 a:hover{background:rgba(255,255,255,.03)}
+.f2 .ico{width:26px;height:26px;color:var(--gold-300)}
+.f2 span{display:grid;color:#b5b3ae;font-size:14px;overflow-wrap:anywhere}
+.f2 b{color:#f1f1ef;font:600 12px Archivo,system-ui,sans-serif;font-stretch:125%;text-transform:uppercase;letter-spacing:.07em;margin-bottom:2px}
+footer .ft{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) minmax(0,1.5fr);gap:28px;padding:36px 0 8px;margin:0;border:0}
+footer .ft h4{margin:0 0 12px}
+.f3 p{margin:0 0 4px;color:#b5b3ae}
+.f3{border-left:1px solid rgba(210,178,116,.22);padding-left:28px}
+.imp{margin-top:28px;border-top:1px solid #2a2a2a;padding-top:18px}
+.imp summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;font:600 12px Archivo,system-ui,sans-serif;font-stretch:125%;text-transform:uppercase;letter-spacing:.1em;color:var(--gold-300)}
+.imp summary::-webkit-details-marker{display:none}
+.imp summary::after{content:"+";font-size:18px}.imp[open] summary::after{content:"\2212"}
+.impg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 28px;margin-top:16px}
+.impg p{margin:0;font-size:12.5px;line-height:1.55;color:#8b8b8b}
+.impg b{display:block;color:#b5b3ae;font-weight:600;margin-bottom:3px}
+footer .legal{display:flex;justify-content:space-between;align-items:center;gap:14px 24px;flex-wrap:wrap;margin-top:26px}
+footer .legal span{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center}
+footer .legal a{padding:0;text-decoration:underline;text-underline-offset:3px}
+#ftop{border:1px solid #2a2a2a;background:none;color:#b5b3ae;font:600 11.5px Archivo,system-ui,sans-serif;font-stretch:125%;text-transform:uppercase;letter-spacing:.06em;padding:9px 12px;cursor:pointer}
+#ftop:hover{border-color:var(--gold-500);color:var(--gold-100)}
+.fine{font-size:12.5px;line-height:1.5;color:var(--mute);margin:10px 0 0}
+@media(max-width:1000px){.f2{grid-template-columns:repeat(2,minmax(0,1fr))}.f2 a:nth-child(3){border-left:0}.f2 a:nth-child(n+3){border-top:1px solid rgba(210,178,116,.18)}footer .ft{grid-template-columns:repeat(2,minmax(0,1fr))}.f3{grid-column:1/-1;border-left:0;padding-left:0;border-top:1px solid rgba(210,178,116,.22);padding-top:22px}.impg{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.f2{grid-template-columns:1fr}.f2 a{border-left:0;padding:16px 4px}.f2 a+a{border-top:1px solid rgba(210,178,116,.18)}.impg{grid-template-columns:1fr}.f1 .flogo .lg{height:78px}footer .legal{flex-direction:column;align-items:flex-start}}
 </style>
 </head>
 <body>
@@ -1112,6 +1144,7 @@ main:focus{outline:none}
         <label style="margin-top:12px">Value of your watch (US$)<input id="tuV" inputmode="numeric" placeholder="For example 9000"></label>
         <p class="cvr" id="tuR" aria-live="polite"></p>
         <button type="button" class="btn" id="tuGo">Request a trade offer</button>
+        <p class="fine">An illustration using your own figure. It is not an offer or a valuation.</p>
       </div>
     </div>
   </div>
@@ -1214,6 +1247,7 @@ main:focus{outline:none}
     <p class="eyebrow">Tools</p>
     <h1 class="pg">The watch desk.</h1>
     <p class="lede" style="margin-top:10px">World time, live currency, a working chronograph, tonight's moon and a few collector's tools.</p>
+    <p class="fine" style="max-width:70ch">These tools are for guidance. Times, rates, sizes and the moon phase are approximations and should not be relied on for anything that matters.</p>
     <div class="wc" style="margin-top:34px"></div>
     <div class="tgrid">
       <div class="tool" style="grid-column:1/-1">
@@ -1348,6 +1382,9 @@ main:focus{outline:none}
     <h2>Authenticity and descriptions</h2><p>Each watch is inspected before it is offered. We describe reference, year, condition and included items as accurately as we can, and we confirm the details of a specific watch in writing before you buy.</p>
     <h2>Prices and availability</h2><p>Prices are shown in US dollars and may change. Most watches are single pieces and may be sold before a reservation is confirmed. Watches marked "Price on request" are priced individually.</p>
     <h2>Reservations, offers and payment</h2><p>A reservation or an offer sent through this site is a request. It becomes a sale only when we confirm it in writing and receive payment in full against our invoice. We may decline any request.</p>
+    <h2>Images, tools and currency</h2><p>Photographs and illustrations are for reference and may not show the exact watch; you receive photos of the specific piece before you commit. The try-on, size, wrist, world time and moon-phase tools are approximations for guidance. Amounts shown in currencies other than US dollars are approximate conversions, and invoices are issued in US dollars.</p>
+    <h2>Not financial advice</h2><p>Articles, model notes and any estimate on this site are general information. Nothing here is financial or investment advice. Watch values can fall as well as rise, and past prices are no guide to future ones.</p>
+    <h2>Trademarks</h2><p>All brand names, model names and logos shown on this site belong to their respective owners. They are used only to identify the watches offered, and no affiliation or endorsement is implied.</p>
     <h2>Sourcing requests</h2><p>When you send a brief we search for the watch you describe. We cannot promise that a particular watch can be found, or found at a particular price or time.</p>
     <h2>Selling or trading your watch</h2><p>Any offer we make for your watch depends on our inspection once we receive it. By offering a watch you confirm that you own it and have the right to sell it.</p>
     <h2>Shipping and returns</h2><p>Delivery arrangements, insurance and any return terms for your purchase are agreed with you and stated on your invoice.</p>
@@ -1394,14 +1431,38 @@ main:focus{outline:none}
       <div><p class="eyebrow" style="color:inherit;opacity:.7">On Instagram</p><h2>@meridianchronogroup</h2><p>New arrivals, recent sales and what is on the bench this week. Follow along, or message us there directly.</p><div class="ctas"><a class="btn" href="https://www.instagram.com/meridianchronogroup" rel="noopener" target="_blank">Follow us</a><a class="btn ghost" href="https://ig.me/m/meridianchronogroup" rel="noopener" target="_blank">Send a message</a></div></div>
       <div class="igw"><iframe id="igF" title="Meridian Chrono Group on Instagram" data-src="https://www.instagram.com/meridianchronogroup/embed/" loading="lazy" scrolling="no" allowtransparency="true"></iframe></div>
     </div>
-    <div class="ft">
-      <div><span class="flogo"><svg class="lg" viewBox="6 8 388 162" role="img" aria-label="Meridian Chrono Group"><use href="#mlogo"/></svg></span><p style="margin-top:14px">Authenticated luxury watches, private sourcing and trade-ins.</p><a href="https://www.instagram.com/meridianchronogroup" rel="noopener">Instagram: @meridianchronogroup</a><a href="tel:+15207284553">+1 (520) 728-4553</a><a href="mailto:info@meridianchrono.com">info@meridianchrono.com</a><span class="floc">Arizona, USA</span><a class="fl1" href="mailto:info@meridianchrono.com?subject=First%20look%20list&body=Please%20add%20me%20to%20the%20first%20look%20list%20for%20new%20arrivals.%0A%0AName%3A%20%0AWatches%20I%20am%20interested%20in%3A%20">Join the first look list</a></div>
-      <div><h4>Shop</h4><a href="#shop">All watches</a><a href="#shop" data-brand="Rolex">Rolex</a><a href="#shop" data-brand="Patek Philippe">Patek Philippe</a><a href="#shop" data-brand="Audemars Piguet">Audemars Piguet</a></div>
-      <div><h4>Services</h4><a href="#source">Source a watch</a><a href="#sell">Sell or trade</a><a href="#authentication">Authentication</a><a href="#contact">Book an appointment</a></div>
-      <div><h4>Learn</h4><a href="#journal">Journal</a><a href="#journal">Glossary</a><a href="#tools">World time and currency</a><a href="#faq">Questions</a></div>
-      <div><h4>Company</h4><a href="#about">About us</a><a href="#contact">Contact</a><a href="#terms">Terms of use</a><a href="#privacy">Privacy policy</a></div>
+    <div class="f1">
+      <span class="flogo"><svg class="lg" viewBox="6 8 388 162" role="img" aria-label="Meridian Chrono Group"><use href="#mlogo"/></svg></span>
+      <p>Authenticated luxury watches, private sourcing and trade-ins.</p>
+      <div class="f1t">Buy &nbsp;&middot;&nbsp; Sell &nbsp;&middot;&nbsp; Trade &nbsp;&middot;&nbsp; Source</div>
     </div>
-    <div class="legal">© 2026 Meridian Chrono Group. Rolex, Patek Philippe, Audemars Piguet, Omega, Cartier and all other brand names and model names are trademarks of their respective owners and are used for identification only. Meridian Chrono Group is an independent dealer and is not affiliated with, sponsored or endorsed by any watch brand shown. Watches sold are pre-owned or unworn, sourced on the secondary market.</div>
+    <div class="f2">
+      <a href="tel:+15207284553"><i data-k="ph"></i><span><b>Call or text</b>+1 (520) 728-4553</span></a>
+      <a href="mailto:info@meridianchrono.com"><i data-k="mail"></i><span><b>Email</b>info@meridianchrono.com</span></a>
+      <a href="https://www.instagram.com/meridianchronogroup" rel="noopener"><i data-k="people"></i><span><b>Instagram</b>@meridianchronogroup</span></a>
+      <a href="#contact"><i data-k="cal"></i><span><b>By appointment</b>Arizona, USA. Clients worldwide.</span></a>
+    </div>
+    <div class="ft">
+      <div><h4>Shop</h4><a href="#shop">All watches</a><a href="#shop" data-brand="Rolex">Rolex</a><a href="#shop" data-brand="Patek Philippe">Patek Philippe</a><a href="#shop" data-brand="Audemars Piguet">Audemars Piguet</a><a href="#shop" data-brand="Omega">Omega</a><a href="#shop" data-brand="Cartier">Cartier</a></div>
+      <div><h4>Services</h4><a href="#source">Source a watch</a><a href="#sell">Sell or trade</a><a href="#authentication">Authentication</a><a href="#contact">Book an appointment</a><a href="#tools">Virtual try-on</a></div>
+      <div><h4>Learn</h4><a href="#journal">Journal</a><a href="#journal">Glossary</a><a href="#tools">The watch desk</a><a href="#faq">Questions</a></div>
+      <div><h4>Company</h4><a href="#about">About us</a><a href="#contact">Contact</a><a href="#terms">Terms of use</a><a href="#privacy">Privacy policy</a></div>
+      <div class="f3"><h4>First look</h4><p>Hear about new arrivals before they are listed.</p><a class="fl1" href="mailto:info@meridianchrono.com?subject=First%20look%20list&body=Please%20add%20me%20to%20the%20first%20look%20list%20for%20new%20arrivals.%0A%0AName%3A%20%0AWatches%20I%20am%20interested%20in%3A%20">Join the first look list</a></div>
+    </div>
+    <details class="imp" id="imp" open>
+      <summary>Important information</summary>
+      <div class="impg">
+        <p><b>Independent dealer.</b> Meridian Chrono Group is an independent dealer. We are not an authorized dealer for, and are not affiliated with, sponsored or endorsed by, any watch brand shown on this site.</p>
+        <p><b>Trademarks.</b> Rolex, Patek Philippe, Audemars Piguet, Omega, Cartier and all other brand names, model names and logos belong to their respective owners and are used only to identify the watches offered.</p>
+        <p><b>Secondary market.</b> Watches are pre-owned or unworn and sourced on the secondary market. A manufacturer's warranty may not apply or transfer. Any cover that does apply is stated on your invoice.</p>
+        <p><b>Prices and availability.</b> Prices and availability can change without notice and are confirmed only in writing. Reserving a watch or sending an offer is a request, not a completed sale.</p>
+        <p><b>Currency.</b> Amounts shown in currencies other than US dollars are approximate conversions at the day's rate. Invoices are issued in US dollars.</p>
+        <p><b>Images.</b> Photographs and illustrations are for reference and may not show the exact watch. You are sent photos of the specific piece before you commit.</p>
+        <p><b>Authentication.</b> Our authentication is our own examination of the watch at the time of sale. It is not a certificate issued by the manufacturer.</p>
+        <p><b>Tools and guidance.</b> The try-on, size, wrist, time and moon-phase tools are approximations for guidance. Articles and estimates are general information, not financial or investment advice. Watch values can fall as well as rise.</p>
+      </div>
+    </details>
+    <div class="legal"><span>© 2026 Meridian Chrono Group. All rights reserved.</span><span><a href="#terms">Terms of use</a><a href="#privacy">Privacy policy</a><a href="#contact">Contact</a><button type="button" id="ftop">Back to top &#8593;</button></span></div>
   </div>
 </footer>
 
@@ -1435,7 +1496,7 @@ main:focus{outline:none}
     <div id="tyM1">
       <label><span class="rw">Wrist size <b id="tyV"></b></span><input type="range" id="tyZ" min="5.5" max="8.5" step="0.25"></label>
       <div class="sw" id="tyK" role="group" aria-label="Skin tone"></div>
-      <p class="cvn">Shown true to scale for the wrist size you set.</p>
+      <p class="cvn">Shown true to scale for the wrist size you set. An approximation: lug shape and thickness change how a watch wears.</p>
     </div>
     <div id="tyM2" hidden>
       <label><span class="rw">Watch size</span><input type="range" id="tyQ" min="12" max="90" value="34"></label>
@@ -1551,7 +1612,7 @@ $("#grid").addEventListener("keydown",e=>{if(e.target.closest("button"))return;c
 /* product dialog */
 const pd=$("#pd");
 function openPD(id){const w=W.find(x=>x.id==id),inBag=bag.includes(id);if(!w)return;cur=id;seen=[id,...seen.filter(i=>i!=id)].slice(0,6);ls.set("mcg-seen",seen);renderSeen();if(location.hash!="#watch-"+id)location.hash="watch-"+id;
- pd.innerHTML=`<button class="x" aria-label="Close">×</button><div class="pd"><div class="art">${svgW(w)}<span class="pst">${stamp(ST[0])}</span></div><div class="info"><span class="br" style="color:var(--mute);font-weight:600">${esc(w.b)}</span><h2 style="margin:4px 0 6px">${esc(w.m)}</h2><div class="price${w.p==null?" poa":""}" style="font-size:24px">${usd(w.p)}${alt(w.p)}</div>${XS[id]?`<p class="note">${XS[id][2]}</p>`:""}<table class="specs"><tr><td>Reference</td><td>${esc(w.r)}</td></tr><tr><td>Year</td><td>${w.y}</td></tr><tr><td>Condition</td><td>${esc(w.c)}</td></tr><tr><td>Included</td><td>${esc(w.set)}</td></tr><tr><td>Case</td><td>${w.mm} mm, ${esc(w.mat)}</td></tr><tr><td>Movement</td><td>${esc(w.mv)}</td></tr>${XS[id]?`<tr><td>Power reserve</td><td>${XS[id][0]}</td></tr><tr><td>Water resistance</td><td>${XS[id][1]}</td></tr>`:""}<tr><td>Authentication</td><td>Passed all four checks</td></tr></table><div class="actions">${w.p==null?`<button class="btn" data-a="ask">Request price and photos</button>`:`<button class="btn" data-a="bag">${inBag?"In your bag, view bag":"Reserve this watch"}</button>`}${w.p==null?"":`<button class="btn ghost" data-a="offer">Make an offer</button>`}<button class="btn ghost" data-a="trade">Trade my watch toward this</button><button class="btn ghost" data-a="save">${wish.has(id)?"Saved":"Save for later"}</button><div class="pl"><button type="button" class="lk" data-a="askq">Ask about this watch</button><button type="button" class="lk" data-a="share">Share</button><a class="lk" href="mailto:info@meridianchrono.com?subject=${encodeURIComponent("Alert me: "+w.b+" "+w.m)}&body=${encodeURIComponent("Please let me know when a watch like the "+w.b+" "+w.m+" ("+w.r+") arrives.\n\nName: \nBest way to reach me: ")}">Alert me to similar</a><a class="lk" href="tel:+15207284553">Call +1 (520) 728-4553</a></div></div><div class="trust"><span>${ico("auth")}Authenticated in house</span><span>${ico("box")}${esc(w.set)}</span><span>${ico("globe")}Worldwide delivery arranged</span><span>${ico("trade")}Trade-ins welcome</span></div><div class="acc"><details><summary>Condition guide</summary><p>${[["Unworn","Never worn, as delivered by the original retailer."],["Excellent","Light signs of careful wear."],["Very good","Visible wear in keeping with its age."]].map(c=>`<span${c[0]==w.c?' class="on"':""}><b>${c[0]}</b> ${c[1]}</span>`).join("")}</p></details><details><summary>Delivery and returns</summary><p>Delivery arrangements, insurance and any return terms for your purchase are agreed with you and stated on your invoice.</p></details><details><summary>Payment</summary><p>Bank wire or card. A specialist confirms the details with you when you reserve.</p></details></div><p style="font-size:14px;color:var(--mute);margin-top:14px">Reserving holds the watch while a specialist confirms payment and delivery with you.</p><div class="fit"><h3>On your wrist <button type="button" class="lk" data-a="tryon" style="float:right;font-size:14px">Try it on, full size</button></h3><label for="wr"><span>Wrist size</span><b id="wrv"></b></label><input type="range" id="wr" min="5.5" max="8.5" step="0.25"><svg id="wsvg" viewBox="0 0 300 200" role="img" aria-label="Watch size on your wrist"></svg><p id="wtxt"></p></div><div class="sim"><h3>You may also like</h3><div class="qr">${sim(w).map(x=>`<button type="button" class="qc" data-v="${x.id}"><span class="mini2">${svgW(x)}</span><b>${esc(x.b)}</b><span>${esc(x.m)}</span><span class="price">${usd(x.p)}</span></button>`).join("")}</div></div><div class="pn"><button class="btn ghost" data-a="prev">Previous</button><button class="btn ghost" data-a="next">Next</button></div></div></div><div class="pbar"><div><small>${esc(w.b)} ${esc(w.m)}</small><b>${usd(w.p)}</b></div>${w.p==null?`<button class="btn" data-a="ask">Request price</button>`:`<button class="btn" data-a="bag">${inBag?"View bag":"Reserve"}</button>`}</div>`;{const big=pd.querySelector(".art .ph");if(big)big.src=U(w.ph,1400)}drawFit(w);$("#wr").oninput=()=>{ls.set("mcg-wrist",+$("#wr").value);drawFit(w)};tick(pd,true);
+ pd.innerHTML=`<button class="x" aria-label="Close">×</button><div class="pd"><div class="art">${svgW(w)}<span class="pst">${stamp(ST[0])}</span></div><div class="info"><span class="br" style="color:var(--mute);font-weight:600">${esc(w.b)}</span><h2 style="margin:4px 0 6px">${esc(w.m)}</h2><div class="price${w.p==null?" poa":""}" style="font-size:24px">${usd(w.p)}${alt(w.p)}</div>${XS[id]?`<p class="note">${XS[id][2]}</p>`:""}<table class="specs"><tr><td>Reference</td><td>${esc(w.r)}</td></tr><tr><td>Year</td><td>${w.y}</td></tr><tr><td>Condition</td><td>${esc(w.c)}</td></tr><tr><td>Included</td><td>${esc(w.set)}</td></tr><tr><td>Case</td><td>${w.mm} mm, ${esc(w.mat)}</td></tr><tr><td>Movement</td><td>${esc(w.mv)}</td></tr>${XS[id]?`<tr><td>Power reserve</td><td>${XS[id][0]}</td></tr><tr><td>Water resistance</td><td>${XS[id][1]}</td></tr>`:""}<tr><td>Authentication</td><td>Passed all four checks</td></tr></table><div class="actions">${w.p==null?`<button class="btn" data-a="ask">Request price and photos</button>`:`<button class="btn" data-a="bag">${inBag?"In your bag, view bag":"Reserve this watch"}</button>`}${w.p==null?"":`<button class="btn ghost" data-a="offer">Make an offer</button>`}<button class="btn ghost" data-a="trade">Trade my watch toward this</button><button class="btn ghost" data-a="save">${wish.has(id)?"Saved":"Save for later"}</button><div class="pl"><button type="button" class="lk" data-a="askq">Ask about this watch</button><button type="button" class="lk" data-a="share">Share</button><a class="lk" href="mailto:info@meridianchrono.com?subject=${encodeURIComponent("Alert me: "+w.b+" "+w.m)}&body=${encodeURIComponent("Please let me know when a watch like the "+w.b+" "+w.m+" ("+w.r+") arrives.\n\nName: \nBest way to reach me: ")}">Alert me to similar</a><a class="lk" href="tel:+15207284553">Call +1 (520) 728-4553</a></div></div><div class="trust"><span>${ico("auth")}Authenticated in house</span><span>${ico("box")}${esc(w.set)}</span><span>${ico("globe")}Worldwide delivery arranged</span><span>${ico("trade")}Trade-ins welcome</span></div><div class="acc"><details><summary>Condition guide</summary><p>${[["Unworn","Never worn, as delivered by the original retailer."],["Excellent","Light signs of careful wear."],["Very good","Visible wear in keeping with its age."]].map(c=>`<span${c[0]==w.c?' class="on"':""}><b>${c[0]}</b> ${c[1]}</span>`).join("")}</p></details><details><summary>Delivery and returns</summary><p>Delivery arrangements, insurance and any return terms for your purchase are agreed with you and stated on your invoice.</p></details><details><summary>Payment</summary><p>Bank wire or card. A specialist confirms the details with you when you reserve.</p></details></div><p class="fine">Price and availability are confirmed in writing. The photo may not show the exact watch; you receive photos of the specific piece before you commit.</p><p style="font-size:14px;color:var(--mute);margin-top:14px">Reserving holds the watch while a specialist confirms payment and delivery with you.</p><div class="fit"><h3>On your wrist <button type="button" class="lk" data-a="tryon" style="float:right;font-size:14px">Try it on, full size</button></h3><label for="wr"><span>Wrist size</span><b id="wrv"></b></label><input type="range" id="wr" min="5.5" max="8.5" step="0.25"><svg id="wsvg" viewBox="0 0 300 200" role="img" aria-label="Watch size on your wrist"></svg><p id="wtxt"></p></div><div class="sim"><h3>You may also like</h3><div class="qr">${sim(w).map(x=>`<button type="button" class="qc" data-v="${x.id}"><span class="mini2">${svgW(x)}</span><b>${esc(x.b)}</b><span>${esc(x.m)}</span><span class="price">${usd(x.p)}</span></button>`).join("")}</div></div><div class="pn"><button class="btn ghost" data-a="prev">Previous</button><button class="btn ghost" data-a="next">Next</button></div></div></div><div class="pbar"><div><small>${esc(w.b)} ${esc(w.m)}</small><b>${usd(w.p)}</b></div>${w.p==null?`<button class="btn" data-a="ask">Request price</button>`:`<button class="btn" data-a="bag">${inBag?"View bag":"Reserve"}</button>`}</div>`;{const big=pd.querySelector(".art .ph");if(big)big.src=U(w.ph,1400)}drawFit(w);$("#wr").oninput=()=>{ls.set("mcg-wrist",+$("#wr").value);drawFit(w)};tick(pd,true);
  pd.onclick=e=>{const a=e.target.closest("[data-a]");if(e.target.closest(".x")||e.target==pd){pd.close();return}const sv=e.target.closest("[data-v]");if(sv){openPD(+sv.dataset.v);return}if(!a)return;const k=a.dataset.a;
   if(k=="askq"){pd.close();$("#aMsg").value="I'd like to know more about the "+w.b+" "+w.m+" ("+w.r+").";$("#aTopic").value="Buying a watch";location.hash="contact";return}
   if(k=="share"&&navigator.share&&matchMedia("(pointer:coarse)").matches){navigator.share({title:w.b+" "+w.m,text:w.b+" "+w.m+" "+w.r+", "+usd(w.p),url:location.origin+location.pathname+"#watch-"+id}).catch(()=>{});return}
@@ -1641,7 +1702,7 @@ const JB=[["Brands make fewer of their most requested models than buyers want. E
 const JP=["1618215650148-e8e61eae521c","1581063683670-6df2247f1d8e","1638872726444-0579101a60e7","1649357585015-179ed98f513d","1790699807407-05e577c9704d","1788125856699-aee0e94d9150"];
 const jart=(w,i)=>`<span class="jw"><svg class="jart" viewBox="0 0 360 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="360" height="150" style="fill:var(--tile)"/><circle cx="270" cy="75" r="110" style="fill:var(--soft)"/><svg x="190" y="-20" width="140" height="210" viewBox="0 0 120 200">${art(w)}</svg></svg><img class="ph" loading="lazy" alt="" src="${U(JP[i],900)}" onerror="this.remove()"></span>`;
 const AX=[["Send us a brief","#source"],["Shop full sets","#shop?f=1"],["See the Royal Oak in hand","#shop?q=Royal%20Oak"],["Try a watch on your wrist","#tools"],["See gold watches in hand","#shop?c=gold"],["Ask us about servicing","#contact"]];
-function article(i){$("#artc").innerHTML=`<a class="more" href="#journal">&#8592; All articles</a>${jart(W[i],i)}<h1 class="pg">${esc(J[i].t)}</h1><p class="rt">${Math.max(1,Math.round(JB[i].join(" ").split(" ").length/200))} minute read</p>${JB[i].map(t=>`<p>${esc(t)}</p>`).join("")}<div class="anx"><span>Next</span><a href="#article-${(i+1)%J.length+1}">${esc(J[(i+1)%J.length].t)}</a></div><div class="ctas">${AX[i]?`<a class="btn" href="${AX[i][1]}">${AX[i][0]}</a>`:""}<a class="btn ghost" href="#shop">Shop the collection</a><button type="button" class="btn ghost" data-shl="${i+1}">Copy link</button></div>`}
+function article(i){$("#artc").innerHTML=`<a class="more" href="#journal">&#8592; All articles</a>${jart(W[i],i)}<h1 class="pg">${esc(J[i].t)}</h1><p class="rt">${Math.max(1,Math.round(JB[i].join(" ").split(" ").length/200))} minute read</p>${JB[i].map(t=>`<p>${esc(t)}</p>`).join("")}<p class="fine">General information only, not financial or investment advice. Watch values can fall as well as rise.</p><div class="anx"><span>Next</span><a href="#article-${(i+1)%J.length+1}">${esc(J[(i+1)%J.length].t)}</a></div><div class="ctas">${AX[i]?`<a class="btn" href="${AX[i][1]}">${AX[i][0]}</a>`:""}<a class="btn ghost" href="#shop">Shop the collection</a><button type="button" class="btn ghost" data-shl="${i+1}">Copy link</button></div>`}
 /* collections, quick bar, zoom, shortcuts */
 $("#ctiles").innerHTML=Object.entries(COL).map(([k,c])=>{const n=W.filter(c.f).length;return`<button type="button" data-k="${k}" style="background-image:linear-gradient(transparent 35%,rgba(0,0,0,.8)),url(${U(c.ph,700)})"><b>${c.t}</b><span>${n} ${n==1?"watch":"watches"}</span></button>`}).join("");
 $("#ctiles").addEventListener("click",e=>{const x=e.target.closest("button");if(!x)return;setBrand("");coll=x.dataset.k;list();location.hash="shop"});
@@ -1820,6 +1881,10 @@ document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest
 {let x0=null,y0=0;pd.addEventListener("touchstart",e=>{const t=e.target;x0=t.closest("input,select,textarea,.qr,.fit")?null:e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
  pd.addEventListener("touchend",e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;x0=null;if(Math.abs(dx)>80&&Math.abs(dy)<50)pd.dispatchEvent(new KeyboardEvent("keydown",{key:dx<0?"ArrowRight":"ArrowLeft",bubbles:true}))},{passive:true})}
 if("serviceWorker"in navigator){/* no offline cache: the site always loads fresh */}
+/* footer */
+document.querySelectorAll(".f2 i[data-k]").forEach(x=>x.outerHTML=ico(x.dataset.k));
+$("#ftop").onclick=()=>scrollTo({top:0,behavior:"smooth"});
+if(innerWidth<760)$("#imp").open=false;
 /* chronograph */
 {let tk="";for(let i=0;i<60;i++)tk+=`<line x1="100" y1="${i%5?10:8}" x2="100" y2="${i%5?15:20}" stroke="currentColor" stroke-width="${i%5?.8:1.8}" transform="rotate(${i*6} 100 100)"/>`;for(let i=0;i<30;i+=5)tk+=`<line x1="100" y1="118" x2="100" y2="122" stroke="currentColor" stroke-width="1" transform="rotate(${i*12} 100 142)"/>`;
  $("#chS").innerHTML=`<circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="1.8"/>${tk}<circle cx="100" cy="142" r="26" fill="none" stroke="currentColor" stroke-width=".8"/><text x="100" y="62" text-anchor="middle" font-family="Archivo,sans-serif" font-size="7.5" letter-spacing="2.5" fill="currentColor">MERIDIAN</text><line id="chM" x1="100" y1="142" x2="100" y2="121" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line id="chH" x1="100" y1="118" x2="100" y2="16" stroke="#d2b274" stroke-width="1.6" stroke-linecap="round"/><circle cx="100" cy="100" r="3.4" fill="#d2b274"/>`;
