@@ -16,7 +16,7 @@
 <meta name="description" content="Meridian Chrono Group: authenticated luxury watches, private sourcing through authorized dealer relationships, and trade-ins.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Cinzel:wght@400..700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 <style>
 /* VOICE  occasion: a private watch salon, hushed and exact, built to sell
    IDEA   the dealer's velvet tray and the hang-tagged case: every piece laid out, numbered, ready to try on
@@ -813,6 +813,18 @@ html[data-theme=dark] .lg{fill:url(#mgl)}
 .fmark .lg{height:auto;width:100%;max-width:340px}
 #sp svg{width:min(320px,72vw);height:auto;margin:0;fill:url(#mgl);stroke:none;opacity:0;animation:spf .9s .15s forwards}
 @media(max-width:600px){.lg{height:40px}.flogo .lg{height:64px}.fmark .lg{height:auto}}
+
+/* ---- v27 brand type and polish ---- */
+h1.pg{font-family:Cinzel,"Trajan Pro",Georgia,serif;font-weight:500;letter-spacing:.06em}
+.btiles b,#bintro h3{font-family:Cinzel,"Trajan Pro",Georgia,serif;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+.btiles b{font-size:19px}#bintro h3{font-size:28px}
+.wis li::before,.tl .yr{font-family:Cinzel,Georgia,serif;font-weight:500}
+.wis li::before{font-size:25px}.tl .yr{font-size:34px}
+.mvb h2,.acta h2{font-family:Cinzel,"Trajan Pro",Georgia,serif;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+.mvb h2{font-size:clamp(26px,3.4vw,42px)}
+#cg{background:#0b0b0b;color:#f1f1ef}
+#toast{font-family:Archivo,system-ui,sans-serif}
+@media(max-width:760px){.btiles b{font-size:16px}h1.pg{letter-spacing:.04em}}
 </style>
 </head>
 <body>
@@ -1676,7 +1688,7 @@ $("#wbr").addEventListener("click",rowClick);renderSeen();
 {const G=[[6.25,34,38],[7,36,40],[7.75,39,42],[99,41,45]],go=()=>{const v=+$("#wgI").value,g=G.find(x=>v<x[0]),n=W.filter(w=>w.mm>=g[1]&&w.mm<=g[2]).length;$("#wgV").textContent=v+" in ("+(v*2.54).toFixed(1)+" cm)";$("#wgR").innerHTML=`Look at <b>${g[1]} to ${g[2]} mm</b> cases. <span>${n} in hand right now.</span>`};$("#wgI").oninput=go;go()}
 /* about: team and promises */
 {const T=[["Rushik Dave","Founder","A collector before he was a dealer. Rushik leads sourcing personally and still makes many of the calls himself."],["Elena Marchetti","Head of Authentication","Elena runs the bench where every watch is opened, measured and checked against its reference. Nothing is offered until she has signed it off."],["Tomas Keller","Watchmaker","Tomas inspects movements, regulates timing and tells us plainly when a watch needs work before it can be sold."],["Daniel Okafor","Client Director","Daniel is the first call for most clients. He takes the brief, keeps you updated through a search and stays on it until the watch is on your wrist."],["Priya Raman","Sourcing, India and the Middle East","Priya looks after our dealer and collector relationships from Mumbai to Dubai, and often hears about a piece before it is listed anywhere."],["Hannah Brooks","Operations and Delivery","Hannah arranges payment, paperwork and shipping, and makes sure every watch arrives exactly as described."],["Arjun Mehta","Editor, the Journal","Arjun writes the journal and the glossary. His job is to explain watches in plain English."]];
- $("#team").innerHTML=T.map(t=>`<article><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="50" cy="50" r="43.5" fill="none" stroke="currentColor" stroke-width=".5"/><path d="M50 2l2.6 4-2.6 4-2.6-4z" fill="#c9a84c"/><text x="50" y="61" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="32" fill="currentColor">${t[0].split(" ").map(x=>x[0]).join("")}</text></svg><div><h3>${t[0]}</h3><span>${t[1]}</span><p>${t[2]}</p></div></article>`).join("");
+ $("#team").innerHTML=T.map(t=>`<article><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="50" cy="50" r="43.5" fill="none" stroke="currentColor" stroke-width=".5"/><path d="M50 2l2.6 4-2.6 4-2.6-4z" fill="#c9a84c"/><text x="50" y="61" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="27" fill="currentColor">${t[0].split(" ").map(x=>x[0]).join("")}</text></svg><div><h3>${t[0]}</h3><span>${t[1]}</span><p>${t[2]}</p></div></article>`).join("");
  $("#exp").innerHTML=[["search","Photos of the exact watch","You see the piece itself, with its papers, before you commit to anything."],["auth","A straight answer on price","One number, explained. If we think a watch is overpriced, we say so."],["people","One specialist throughout","The person who takes your brief is the person who hands over the watch."],["lock","No pressure and no publicity","Take the time you need. What you buy stays between us."]].map(x=>`<div>${ico(x[0])}<h3>${x[1]}</h3><p>${x[2]}</p></div>`).join("")}
 /* journal */
 $("#jr").innerHTML=J.map(j=>{const w=W.find(x=>x.id==[1,2,3][j.w-1]);return`<article><svg class="jart" viewBox="0 0 360 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="360" height="150" style="fill:var(--tile)"/><circle cx="270" cy="75" r="110" style="fill:var(--soft)"/><svg x="190" y="-20" width="140" height="210" viewBox="0 0 120 200">${art(w)}</svg></svg><div><h3>${esc(j.t)}</h3><p>${esc(j.x)}</p></div></article>`}).join("");
