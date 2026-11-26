@@ -406,6 +406,12 @@ h2.big{text-transform:uppercase;letter-spacing:.04em;font-size:clamp(26px,3vw,40
 .btiles{grid-template-columns:repeat(5,minmax(0,1fr))}
 @media(max-width:760px){.btiles{grid-template-columns:repeat(2,minmax(0,1fr))}.strip{aspect-ratio:16/9}}
 @media(prefers-reduced-motion:reduce){.mq>div,.hp{animation:none}.card .ph{transition:none}}
+.row,.brands,.sv{scrollbar-width:none}
+.row::-webkit-scrollbar,.brands::-webkit-scrollbar,.sv::-webkit-scrollbar{display:none}
+.fbl .arrows{margin-top:auto}
+.fbl .btn{margin-top:14px}
+.accent .ar{background:transparent;border-color:color-mix(in srgb,var(--ink) 35%,transparent)}
+@media(max-width:760px){.fbl .arrows{display:none}}
 </style>
 </head>
 <body>
@@ -432,13 +438,13 @@ h2.big{text-transform:uppercase;letter-spacing:.04em;font-size:clamp(26px,3vw,40
 <div class="mq" data-view="home" aria-hidden="true"><div><span>Authenticated in-house</span><span>Sourced to order</span><span>Sell or trade</span><span>By appointment</span><span>Private clients worldwide</span><span>Authenticated in-house</span><span>Sourced to order</span><span>Sell or trade</span><span>By appointment</span><span>Private clients worldwide</span><span>Authenticated in-house</span><span>Sourced to order</span><span>Sell or trade</span><span>By appointment</span><span>Private clients worldwide</span><span>Authenticated in-house</span><span>Sourced to order</span><span>Sell or trade</span><span>By appointment</span><span>Private clients worldwide</span></div></div>
 <section class="band accent" data-view="home">
   <div class="wrap fb">
-    <div class="fbl"><h2>Featured picks</h2><p>The pieces our clients ask about most, in hand and ready to ship.</p><a class="btn" href="#shop">Shop now</a></div>
+    <div class="fbl"><h2>Featured picks</h2><p>The pieces our clients ask about most, in hand and ready to ship.</p><div class="arrows"><button type="button" class="ar" data-row="#feat" data-d="0" aria-label="Previous">&#8592;</button><button type="button" class="ar" data-row="#feat" data-d="1" aria-label="Next">&#8594;</button></div><a class="btn" href="#shop">Shop now</a></div>
     <div class="row" id="feat"></div>
   </div>
 </section>
 <section class="band" data-view="home">
   <div class="wrap">
-    <div class="sechead"><h2>New arrivals</h2><a class="more" href="#shop">Shop all</a></div>
+    <div class="sechead"><h2>New arrivals</h2><div class="arrows"><button type="button" class="ar" data-row="#newa" data-d="0" aria-label="Previous">&#8592;</button><button type="button" class="ar" data-row="#newa" data-d="1" aria-label="Next">&#8594;</button><a class="more" href="#shop">Shop all</a></div></div>
     <div class="row" id="newa"></div>
   </div>
 </section>
