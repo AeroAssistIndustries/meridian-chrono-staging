@@ -685,6 +685,56 @@ dialog#td{max-width:min(1040px,94vw);width:100%;padding:0}
 .igw{background:#fff;min-height:200px}
 #igF{display:block;width:100%;height:600px;border:0;background:#fff}
 @media(max-width:860px){.igf{grid-template-columns:1fr}#igF{height:calc(100vw + 60px);max-height:600px}}
+
+/* ---- v20 ---- */
+.pg6{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:22px}
+.pg6 div{display:grid;gap:6px;align-content:start}.pg6 svg{width:46px;height:46px;color:var(--acc);margin-bottom:6px}
+.pg6 b{font:600 15px Archivo,system-ui,sans-serif}.pg6 span{font-size:14px;color:var(--mute)}
+.tuc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center;margin-top:64px}
+.tuc h2{margin-bottom:10px}.tuc .btn{margin-top:6px}
+.szc{display:grid;gap:18px}
+#szS{width:100%;height:auto;color:var(--ink)}
+@media(max-width:1000px){.pg6{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.pg6{grid-template-columns:repeat(2,minmax(0,1fr))}.tuc,.szc{grid-template-columns:1fr}}
+
+/* ---- v21 gold and spacing ---- */
+:root{--g1:#b8923a;--g2:#e6cd85;--goldg:linear-gradient(100deg,#8a6a1f,#e6cd85 42%,#b8923a 68%,#8a6a1f)}
+::selection{background:#e6cd85;color:#111}
+#spb{position:fixed;left:0;top:0;right:0;height:2px;z-index:60;background:var(--goldg);transform-origin:0 50%;transform:scaleX(0);pointer-events:none}
+.util{border-bottom:1px solid rgba(201,168,76,.55)}
+.util a[href^="tel"]{color:var(--g2)}
+.band{padding-block:clamp(32px,3.8vw,54px)}
+.sechead h2::before,.wrap>h2::before,h1.pg::before{content:"";display:block;width:36px;height:2px;background:var(--goldg);margin-bottom:14px}
+.acta h2::before,.igf h2::before{display:none}
+.eyebrow{color:var(--acc);opacity:1}
+.hs .eyebrow{color:var(--g2);opacity:1}
+.hs .eyebrow::before{content:"";display:inline-block;width:28px;height:1px;background:var(--g2);vertical-align:middle;margin-right:12px}
+.hs .btn{background:var(--goldg);border-color:transparent;color:#14110a}
+.hs .btn:hover{opacity:1;filter:brightness(1.08)}
+.hdots button[aria-pressed=true]{background-image:linear-gradient(var(--g2),var(--g2))}
+.btn:not(.ghost):hover{background:var(--g1);border-color:var(--g1);color:#fff;opacity:1}
+.btn.ghost:hover{border-color:var(--g1);color:var(--acc)}
+nav.main a:hover,nav.main a[aria-current]{text-decoration-color:var(--g1);text-decoration-thickness:2px}
+.card:hover .art{box-shadow:inset 0 0 0 1px var(--g1)}
+.accent .card:hover .art{box-shadow:none}
+.bdg{box-shadow:inset 0 -2px 0 var(--g1)}
+.st .stamp>circle:first-of-type{stroke:var(--g1)}
+.team svg circle:first-child{stroke:var(--g1)}
+footer.band{border-top:2px solid transparent;border-image:var(--goldg) 1}
+footer h4{color:var(--g2)}
+.fl1{border-color:var(--g1)!important;color:var(--g2)}
+#cg svg{color:var(--g2)}#cg{border-top:2px solid var(--g1)}
+.cgh{border-bottom:2px solid var(--g1)}
+#sp svg circle{stroke:#c9a84c}
+.mg h4{color:var(--acc)}
+.price{letter-spacing:.01em}
+.proof{border-top:1px solid var(--line)}
+.proof div b::after{content:"";display:block;width:22px;height:1px;background:var(--g1);margin:6px 0 4px}
+.tabbar{border-top:1px solid var(--g1)}
+.brands button[aria-pressed=true]{box-shadow:inset 0 -3px 0 var(--g1)}
+.chip{box-shadow:inset 0 -2px 0 var(--g1)}
+dialog#pd,dialog#td,#cgP,#mega{border-top:2px solid var(--g1)}
+@media(max-width:760px){.band{padding-block:30px}.sechead h2::before,.wrap>h2::before,h1.pg::before{margin-bottom:10px;width:28px}}
 </style>
 </head>
 <body>
@@ -842,6 +892,19 @@ dialog#td{max-width:min(1040px,94vw);width:100%;padding:0}
       <div class="full"><button class="btn" type="submit">Request my offer</button></div>
     </form>
   </div>
+  <div class="wrap" style="margin-top:56px">
+    <div class="sechead"><h2>Six photos that get you a faster offer</h2><p class="lede" style="margin:0">Phone photos in daylight are fine. Attach them when you email or text your details.</p></div>
+    <div class="pg6" id="pg6"></div>
+    <div class="tuc">
+      <div><h2>Trade-up calculator</h2><p class="lede">Pick the watch you want and enter what yours is worth, your own estimate or our offer, to see the difference.</p></div>
+      <div class="tool">
+        <label>Watch you want<select id="tuW"></select></label>
+        <label style="margin-top:12px">Value of your watch (US$)<input id="tuV" inputmode="numeric" placeholder="For example 9000"></label>
+        <p class="cvr" id="tuR" aria-live="polite"></p>
+        <button type="button" class="btn" id="tuGo">Request a trade offer</button>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="band" data-view="authentication" id="authentication" style="background:var(--panel);border-block:1px solid var(--line)">
@@ -962,6 +1025,10 @@ dialog#td{max-width:min(1040px,94vw);width:100%;padding:0}
       <div class="tool">
         <h2>Moon phase</h2>
         <div class="mo"><svg id="moS" viewBox="0 0 120 120" role="img" aria-label="Tonight's moon"></svg><div><p class="cvr" id="moN" style="margin-top:0"></p><p class="cvn" id="moD"></p></div></div>
+      </div>
+      <div class="tool">
+        <h2>Size compare</h2>
+        <div class="szc"><div><label>First watch<select id="szA"></select></label><label style="margin-top:12px">Second watch<select id="szB"></select></label><p class="cvr" id="szR" aria-live="polite"></p><p class="cvn">Drawn to the same scale, with a US quarter (24.3 mm) for reference.</p></div><svg id="szS" viewBox="0 0 300 170" role="img" aria-label="Case sizes compared"></svg></div>
       </div>
       <div class="tool">
         <h2>Wrist size guide</h2>
@@ -1102,6 +1169,7 @@ dialog#td{max-width:min(1040px,94vw);width:100%;padding:0}
   </div>
 </footer>
 
+<div id="spb" aria-hidden="true"></div>
 <button type="button" id="cg" aria-label="Contact the concierge" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M7 4h3.400l1.400 4-2 1.500c1 2.100 2.400 3.600 4.600 4.600L16 12l4 1.500V17c0 1.200-1 2-2.100 2C10.600 18.400 5.500 13.300 5 6.100 4.900 5 5.800 4 7 4z"/></svg><span>Concierge</span></button>
 <div id="cgP" role="dialog" aria-label="Concierge" hidden>
   <div class="cgh"><b>Meridian concierge</b><span id="cgT"></span><button type="button" id="cgX" aria-label="Close">×</button></div>
@@ -1430,6 +1498,19 @@ $("#apptForm").addEventListener("submit",()=>{const d=$("#aDate").value,box=$("#
  M.addEventListener("click",e=>{const b=e.target.closest("button,a");if(!b)return;M.hidden=true;if(b.dataset.mv){openPD(+b.dataset.mv);return}if(b.dataset.mb){setBrand(b.dataset.mb)}else if(b.dataset.mc){setBrand("");coll=b.dataset.mc;list()}else if(b.dataset.mp){setBrand("");$("#fPrice").value=b.dataset.mp;list()}else return;location.hash="shop"})}}
 /* instagram feed: load when the footer comes near */
 {const f=$("#igF"),go=()=>{if(!f.src)f.src=f.dataset.src};if("IntersectionObserver"in window){const o=new IntersectionObserver(e=>{if(e.some(x=>x.isIntersecting)){go();o.disconnect()}},{rootMargin:"600px"});o.observe(f)}else go()}
+/* sell: photo guide and trade-up */
+{const S=(d)=>`<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+ $("#pg6").innerHTML=[['<circle cx="24" cy="24" r="13"/><path d="M24 15v9l6 4M18 8h12M18 40h12"/>',"Dial, straight on","Sharp and glare-free, so the printing can be read."],['<circle cx="24" cy="24" r="13"/><circle cx="24" cy="24" r="6"/><path d="M24 11v3M24 34v3M11 24h3M34 24h3"/>',"Case back","Engravings and any stickers, exactly as they are."],['<rect x="17" y="8" width="14" height="32" rx="5"/><path d="M31 21h4v6h-4"/>',"Both sides","Crown side and opposite, to show the case edges."],['<path d="M10 20h28v8H10zM16 20v8M24 20v8M32 20v8"/><path d="M19 14h10M19 34h10"/>',"Clasp and bracelet","Open and closed, with any spare links laid out."],['<path d="M8 18l16-8 16 8v14l-16 8-16-8z"/><path d="M8 18l16 8 16-8M24 26v14"/>',"Box and papers","Everything that came with it, card included."],['<rect x="9" y="14" width="30" height="20" rx="2"/><path d="M14 21h10M14 26h14M32 20v8"/>',"Reference and serial","From the card, or between the lugs if you can."]].map((x,i)=>`<div>${S(x[0])}<b>${i+1}. ${x[1]}</b><span>${x[2]}</span></div>`).join("");
+ const L=W.filter(w=>w.p!=null);$("#tuW").innerHTML=L.map(w=>`<option value="${w.id}">${esc(w.b+" "+w.m)}, ${usd(w.p)}</option>`).join("");
+ const go=()=>{const w=W.find(x=>x.id==+$("#tuW").value),v=parseFloat($("#tuV").value.replace(/[^0-9.]/g,"")),r=$("#tuR");if(!(v>0)){r.textContent="Enter a value to see the difference.";return}const d=w.p-v;r.innerHTML=d>0?`You would add about <b>${usd(Math.round(d))}</b>.`:d<0?`Your watch covers it, with about <b>${usd(Math.round(-d))}</b> back to you.`:"An even trade."};
+ $("#tuW").oninput=go;$("#tuV").oninput=go;go();
+ $("#tuGo").onclick=()=>{const w=W.find(x=>x.id==+$("#tuW").value);$("#lToward").value=w.b+" "+w.m+" ("+w.r+")";$("#lWant").value="Trade toward another watch";$("#sellForm").scrollIntoView({behavior:"smooth",block:"start"});setTimeout(()=>$("#lBrand").focus(),500)}}
+/* size compare */
+{const o=W.map(w=>`<option value="${w.id}">${esc(w.b+" "+w.m)} (${w.mm} mm)</option>`).join("");$("#szA").innerHTML=o;$("#szB").innerHTML=o;$("#szA").value=5;$("#szB").value=9;
+ const go=()=>{const a=W.find(w=>w.id==+$("#szA").value),b=W.find(w=>w.id==+$("#szB").value),k=2.5,c=(x,mm,cl,ds)=>`<circle cx="${x}" cy="85" r="${mm/2*k}" fill="none" stroke="${cl}" stroke-width="2"${ds?' stroke-dasharray="5 4"':""}/><text x="${x}" y="${85+mm/2*k+14}" text-anchor="middle" font-size="10" fill="currentColor" font-family="Archivo,sans-serif">${mm} mm</text>`;
+  $("#szS").innerHTML=c(66,a.mm,"currentColor")+c(178,b.mm,"#c9a84c")+`<circle cx="66" cy="85" r="${b.mm/2*k}" fill="none" stroke="#c9a84c" stroke-width="1.2" stroke-dasharray="3 4" opacity=".8"/><circle cx="266" cy="85" r="${24.26/2*k}" fill="none" stroke="currentColor" stroke-width="1" opacity=".5"/><text x="266" y="88" text-anchor="middle" font-size="8" fill="currentColor" opacity=".6" font-family="Archivo,sans-serif">25¢</text>`;
+  const d=Math.round((b.mm-a.mm)*10)/10;$("#szR").innerHTML=d==0?"The same size on paper.":`The ${esc(b.m)} is <b>${Math.abs(d)} mm ${d>0?"larger":"smaller"}</b> across.`};
+ $("#szA").oninput=go;$("#szB").oninput=go;go()}
 /* chronograph */
 {let tk="";for(let i=0;i<60;i++)tk+=`<line x1="100" y1="${i%5?10:8}" x2="100" y2="${i%5?15:20}" stroke="currentColor" stroke-width="${i%5?.8:1.8}" transform="rotate(${i*6} 100 100)"/>`;for(let i=0;i<30;i+=5)tk+=`<line x1="100" y1="118" x2="100" y2="122" stroke="currentColor" stroke-width="1" transform="rotate(${i*12} 100 142)"/>`;
  $("#chS").innerHTML=`<circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="1.8"/>${tk}<circle cx="100" cy="142" r="26" fill="none" stroke="currentColor" stroke-width=".8"/><text x="100" y="62" text-anchor="middle" font-family="Archivo,sans-serif" font-size="7.5" letter-spacing="2.5" fill="currentColor">MERIDIAN</text><line id="chM" x1="100" y1="142" x2="100" y2="121" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line id="chH" x1="100" y1="118" x2="100" y2="16" stroke="#c9a84c" stroke-width="1.6" stroke-linecap="round"/><circle cx="100" cy="100" r="3.4" fill="#c9a84c"/>`;
@@ -1455,9 +1536,9 @@ $("#jr").innerHTML=J.map(j=>{const w=W.find(x=>x.id==[1,2,3][j.w-1]);return`<art
 save();list();renderCmp();renderSeen();
 const calm=matchMedia("(prefers-reduced-motion:reduce)").matches;
 setInterval(()=>{tick($("#hero"),!calm);if(pd.open)tick(pd,!calm)},1000);setInterval(()=>tick($("#grid")),30000);
-function topfx(){const tt=$("#totop");if(tt)tt.hidden=scrollY<900;document.body.classList.toggle("over",view=="home"&&scrollY<60);document.documentElement.style.setProperty("--hh",$("header").offsetHeight+"px")}
+function topfx(){const tt=$("#totop");{const b=$("#spb"),m=document.documentElement.scrollHeight-innerHeight;if(b)b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")"}if(tt)tt.hidden=scrollY<900;document.body.classList.toggle("over",view=="home"&&scrollY<60);document.documentElement.style.setProperty("--hh",$("header").offsetHeight+"px")}
 addEventListener("scroll",topfx,{passive:true});addEventListener("resize",topfx);
-const HS=[{e:"Authenticated in-house",t:"Access you can't buy at retail.",b:"Shop now",h:"#shop",w:2,p:"1626624386327-5204714bae9f",g:["#081226","#2a57c4"]},{e:"Private sourcing",t:"Tell us the reference. We'll find it.",b:"Source a watch",h:"#source",w:5,p:"1788125856699-aee0e94d9150",g:["#190f0a","#96603f"]},{e:"Sell or trade",t:"Find out what your watch is worth.",b:"Get started",h:"#sell",w:12,p:"1649357585015-179ed98f513d",g:["#08140f","#3d7d5c"]}];let hi=0;
+const HS=[{e:"Authenticated in-house",t:"Access you can't buy at retail.",b:"Shop now",h:"#shop",w:2,p:"1626624386327-5204714bae9f",g:["#081226","#2a57c4"]},{e:"Private sourcing",t:"Tell us the reference. We'll find it.",b:"Source a watch",h:"#source",w:5,p:"1788125856699-aee0e94d9150",g:["#190f0a","#96603f"]},{e:"Sell or trade",t:"Find out what your watch is worth.",b:"Get started",h:"#sell",w:12,p:"1649357585015-179ed98f513d",g:["#08140f","#3d7d5c"]},{e:"Trade up",t:"Put your watch toward the next one.",b:"See what you would add",h:"#sell",w:4,p:"1731446451263-fc3881d4973d",g:["#1a1408","#b8923a"]},{e:"By appointment",t:"Speak with a specialist, one to one.",b:"Book an appointment",h:"#contact",w:7,p:"1602103146071-b3b209c8ca9b",g:["#1a0f0d","#a66a4c"]}];let hi=0;
 function hero(){const x=HS[hi],el=$("#hero");el.style.background=`linear-gradient(105deg,${x.g[0]} 30%,${x.g[1]})`;el.innerHTML=`<svg class="hw" viewBox="0 0 120 200" aria-hidden="true">${art(W.find(w=>w.id==x.w))}</svg>${x.p?`<img class="hp" alt="" src="${U(x.p,1800)}" onerror="this.remove()">`:""}<div class="hv"></div><div class="ht"><p class="eyebrow">${x.e}</p><h1>${x.t}</h1><a class="btn inv" href="${x.h}">${x.b}</a><div class="hdots">${HS.map((_,i)=>`<button type="button" data-i="${i}" aria-label="Slide ${i+1}" aria-pressed="${i==hi}"></button>`).join("")}</div></div>`;tick(el,true)}
 let ht=calm?0:setInterval(()=>{if(view=="home"&&!document.hidden&&!document.querySelector("dialog[open]")){hi=(hi+1)%HS.length;hero()}},7000);
 $("#hero").addEventListener("click",e=>{const d=e.target.closest("[data-i]");if(d){hi=+d.dataset.i;hero();clearInterval(ht)}});hero();
