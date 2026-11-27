@@ -995,6 +995,10 @@ main>section[data-view]:not([hidden]):not(.hero){animation:vin .35s ease-out bot
 }
 @media(max-width:520px){.hbs li:nth-child(n){padding:16px 0 4px 58px;border-left:0}}
 @media(min-width:521px) and (max-width:900px){.hbs li:nth-child(3){padding-left:0;border-left:0}}
+
+/* ---- v38 hero ---- */
+#hero .hw{opacity:0;transition:opacity .4s}
+#hero.nop .hw{opacity:1}
 </style>
 </head>
 <body>
@@ -1997,9 +2001,11 @@ setInterval(()=>{tick($("#hero"),!calm);if(pd.open)tick(pd,!calm)},1000);setInte
 function topfx(){const tt=$("#totop");{const b=$("#spb"),m=document.documentElement.scrollHeight-innerHeight;if(b)b.style.transform="scaleX("+(m>0?Math.min(1,scrollY/m):0)+")"}if(tt)tt.hidden=scrollY<900;document.body.classList.toggle("over",view=="home"&&scrollY<60);document.documentElement.style.setProperty("--hh",$("header").offsetHeight+"px")}
 addEventListener("scroll",topfx,{passive:true});addEventListener("resize",topfx);
 const HS=[{e:"Authenticated in-house",t:"Access you can't buy at retail.",b:"Shop now",h:"#shop",w:2,p:"1626624386327-5204714bae9f",g:["#081226","#2a57c4"]},{e:"Private sourcing",t:"Tell us the reference. We'll find it.",b:"Source a watch",h:"#source",w:5,p:"1788125856699-aee0e94d9150",g:["#190f0a","#96603f"]},{e:"Sell or trade",t:"Find out what your watch is worth.",b:"Get started",h:"#sell",w:12,p:"1649357585015-179ed98f513d",g:["#08140f","#3d7d5c"]},{e:"Trade up",t:"Put your watch toward the next one.",b:"See what you would add",h:"#sell",w:4,p:"1731446451263-fc3881d4973d",g:["#1a1408","#a5854a"]},{e:"By appointment",t:"Speak with a specialist, one to one.",b:"Book an appointment",h:"#contact",w:7,p:"1602103146071-b3b209c8ca9b",g:["#1a0f0d","#a66a4c"]}];let hi=0;
-function hero(){const x=HS[hi],el=$("#hero");el.style.background=`linear-gradient(105deg,${x.g[0]} 30%,${x.g[1]})`;el.innerHTML=`<svg class="hw" viewBox="0 0 120 200" aria-hidden="true">${art(W.find(w=>w.id==x.w))}</svg>${x.p?`<img class="hp" alt="" src="${U(x.p,1800)}" onerror="this.remove()">`:""}<div class="hv"></div><div class="ht"><p class="eyebrow">${x.e}</p><h1>${x.t}</h1><a class="btn inv" href="${x.h}">${x.b}</a><div class="hdots">${HS.map((_,i)=>`<button type="button" data-i="${i}" aria-label="Slide ${i+1}" aria-pressed="${i==hi}"></button>`).join("")}</div></div>`;tick(el,true)}
+function hero(){const x=HS[hi],el=$("#hero"),pv=el.querySelector("img.hp");el.style.background=(pv&&pv.complete&&pv.naturalWidth?`url("${pv.currentSrc||pv.src}") center/cover no-repeat,`:"")+`linear-gradient(105deg,${x.g[0]} 30%,${x.g[1]})`;el.innerHTML=`<svg class="hw" viewBox="0 0 120 200" aria-hidden="true">${art(W.find(w=>w.id==x.w))}</svg>${x.p?`<img class="hp" alt="" src="${U(x.p,1800)}" onerror="this.parentNode.classList.add('nop');this.remove()">`:""}<div class="hv"></div><div class="ht"><p class="eyebrow">${x.e}</p><h1>${x.t}</h1><a class="btn inv" href="${x.h}">${x.b}</a><div class="hdots">${HS.map((_,i)=>`<button type="button" data-i="${i}" aria-label="Slide ${i+1}" aria-pressed="${i==hi}"></button>`).join("")}</div></div>`;el.classList.toggle("nop",!x.p);const nx=HS[(hi+1)%HS.length];if(nx.p)new Image().src=U(nx.p,1800);tick(el,true)}
 let ht=calm?0:setInterval(()=>{if(view=="home"&&!document.hidden&&!document.querySelector("dialog[open]")){hi=(hi+1)%HS.length;hero()}},7000);
-$("#hero").addEventListener("click",e=>{const d=e.target.closest("[data-i]");if(d){hi=+d.dataset.i;hero();clearInterval(ht)}});hero();
+$("#hero").addEventListener("click",e=>{const d=e.target.closest("[data-i]");if(d){hi=+d.dataset.i;hero();clearInterval(ht)}});
+{let sx=null;const H=$("#hero");H.addEventListener("touchstart",e=>{sx=e.touches[0].clientX},{passive:true});H.addEventListener("touchend",e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>50){hi=(hi+(dx<0?1:HS.length-1))%HS.length;hero();clearInterval(ht)}},{passive:true})}
+hero();
 if(/^#watch-/.test(location.hash))setView("shop");route();
 }
 </script>
