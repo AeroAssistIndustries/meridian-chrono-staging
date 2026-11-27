@@ -985,6 +985,16 @@ footer .legal a{padding:0;text-decoration:underline;text-underline-offset:3px}
 main>section[data-view]:not([hidden]):not(.hero){animation:vin .35s ease-out both}
 @media(prefers-reduced-motion:reduce){main>section[data-view]{animation:none!important}}
 .hero .dots button,#hero .dots button{position:relative}
+
+/* ---- v37 mobile home fixes ---- */
+.accent .card{border-radius:0}
+@media(max-width:760px){
+ #totop{display:none!important}
+ .btiles>:last-child:nth-child(odd){grid-column:1/-1}
+ .night .sechead{align-items:center}
+}
+@media(max-width:520px){.hbs li:nth-child(n){padding:16px 0 4px 58px;border-left:0}}
+@media(min-width:521px) and (max-width:900px){.hbs li:nth-child(3){padding-left:0;border-left:0}}
 </style>
 </head>
 <body>
